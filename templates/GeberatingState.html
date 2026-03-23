@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#d9e3f6",
+                        "on-background": "#191c1d",
+                        "inverse-surface": "#2e3132",
+                        "secondary": "#555f6f",
+                        "primary": "#000000",
+                        "primary-fixed": "#dce2f7",
+                        "secondary-fixed-dim": "#bdc7d9",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "surface-container-low": "#f3f4f5",
+                        "on-tertiary-fixed": "#231b00",
+                        "tertiary-container": "#cea700",
+                        "tertiary-fixed": "#ffe083",
+                        "on-secondary-fixed": "#121c2a",
+                        "on-primary-fixed": "#141b2b",
+                        "on-error-container": "#93000a",
+                        "outline-variant": "#c6c6cd",
+                        "error": "#ba1a1a",
+                        "primary-container": "#141b2b",
+                        "primary-fixed-dim": "#c0c6db",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#f8f9fa",
+                        "background": "#f8f9fa",
+                        "on-surface": "#191c1d",
+                        "tertiary-fixed-dim": "#eec200",
+                        "surface-tint": "#575e70",
+                        "surface-container": "#edeeef",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#c0c6db",
+                        "on-secondary-fixed-variant": "#3d4756",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary-container": "#d6e0f3",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary": "#ffffff",
+                        "outline": "#76777d",
+                        "on-surface-variant": "#45464c",
+                        "tertiary": "#735c00",
+                        "surface-variant": "#e1e3e4",
+                        "surface-dim": "#d9dadb",
+                        "on-tertiary-container": "#4e3e00",
+                        "on-primary-fixed-variant": "#404758",
+                        "on-primary-container": "#7d8497",
+                        "surface-bright": "#f8f9fa",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#596373"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .clay-extruded {
+            box-shadow: 10px 10px 20px rgba(17, 24, 39, 0.08), -10px -10px 20px #FFFFFF;
+        }
+
+        .clay-involved {
+            box-shadow: inset 6px 6px 12px rgba(0, 0, 0, 0.1), inset -6px -6px 12px rgba(255, 255, 255, 0.8);
+        }
+
+        .clay-involved-dark {
+            box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.4), inset -2px -2px 6px rgba(255, 255, 255, 0.05);
+        }
+
+        .clay-pill-yellow {
+            box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.1), inset -2px -2px 4px rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes pulse-star {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 0.8;
+            }
+        }
+
+        .animate-star {
+            animation: pulse-star 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-background font-body text-on-background min-h-screen flex flex-col">
+    <!-- Top Navigation -->
+    <header
+        class="sticky top-0 z-50 w-full bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-[0_10px_20px_rgba(17,24,39,0.05)]">
+        <nav class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+            <div class="text-2xl font-black text-slate-900 dark:text-slate-50 tracking-tighter font-inter antialiased">
+                KeralaStory
+            </div>
+            <div class="flex items-center gap-4">
+                <button
+                    class="material-symbols-outlined text-slate-900 dark:text-slate-50 hover:opacity-70 transition-opacity active:scale-95 transition-transform duration-200">
+                    account_circle
+                </button>
+            </div>
+        </nav>
+    </header>
+    <!-- Loading Content Area -->
+    <main class="flex-grow flex flex-col items-center justify-center px-6">
+        <div class="max-w-md w-full text-center space-y-12">
+            <!-- Central Visual Anchor -->
+            <div class="relative flex items-center justify-center">
+                <!-- Outer Clay Surface -->
+                <div
+                    class="w-48 h-48 rounded-xl bg-primary-container flex items-center justify-center clay-extruded relative overflow-hidden">
+                    <!-- Subtle Interior Glow -->
+                    <div class="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none">
+                    </div>
+                    <!-- Inner Carved Circle -->
+                    <div
+                        class="w-24 h-24 rounded-full bg-primary-container flex items-center justify-center clay-involved-dark">
+                        <span class="material-symbols-outlined text-tertiary-fixed text-5xl animate-star"
+                            data-weight="fill" style="font-variation-settings: 'FILL' 1;">
+                            star
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- Text Content -->
+            <div class="space-y-4">
+                <h1 class="text-3xl font-extrabold tracking-tighter text-on-surface">
+                    Personalising your story...
+                </h1>
+                <p class="text-lg text-on-primary-container font-medium opacity-80">
+                    Finding the schemes that shaped your life
+                </p>
+            </div>
+            <!-- Progress Component -->
+            <div class="w-full space-y-4">
+                <!-- Progress Track -->
+                <div
+                    class="h-6 w-full bg-surface-container-high rounded-full clay-involved relative overflow-hidden p-1">
+                    <!-- Progress Fill -->
+                    <div
+                        class="h-full w-[65%] bg-tertiary-fixed-dim rounded-full clay-pill-yellow transition-all duration-1000">
+                        <div class="h-full w-full bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                    </div>
+                </div>
+                <!-- Status Details (Asymmetric Grid) -->
+                <div class="grid grid-cols-2 gap-4 mt-8">
+                    <div class="bg-surface-container-low p-6 rounded-lg clay-extruded text-left">
+                        <div
+                            class="text-xs font-bold uppercase tracking-widest text-on-secondary-container opacity-50 mb-2">
+                            Analyzing</div>
+                        <div class="text-sm font-bold text-on-surface">Demographic Data</div>
+                    </div>
+                    <div class="bg-surface-container-low p-6 rounded-lg clay-extruded text-left mt-4">
+                        <div
+                            class="text-xs font-bold uppercase tracking-widest text-on-secondary-container opacity-50 mb-2">
+                            Matching</div>
+                        <div class="text-sm font-bold text-on-surface">State Heritage</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full py-12 bg-transparent">
+        <div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-4">
+            <p class="text-sm font-medium leading-relaxed text-slate-400 dark:text-slate-600">
+                © 2024 KeralaStory. All rights reserved.
+            </p>
+            <div class="flex gap-6">
+                <a class="text-sm font-medium text-slate-400 dark:text-slate-600 hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
+                    href="#">Privacy Policy</a>
+                <a class="text-sm font-medium text-slate-400 dark:text-slate-600 hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
+                    href="#">Terms of Service</a>
+                <a class="text-sm font-medium text-slate-400 dark:text-slate-600 hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
+                    href="#">Help Center</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

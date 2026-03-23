@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#d9e3f6",
+                        "on-background": "#191c1d",
+                        "inverse-surface": "#2e3132",
+                        "secondary": "#555f6f",
+                        "primary": "#000000",
+                        "primary-fixed": "#dce2f7",
+                        "secondary-fixed-dim": "#bdc7d9",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "surface-container-low": "#f3f4f5",
+                        "on-tertiary-fixed": "#231b00",
+                        "tertiary-container": "#cea700",
+                        "tertiary-fixed": "#ffe083",
+                        "on-secondary-fixed": "#121c2a",
+                        "on-primary-fixed": "#141b2b",
+                        "on-error-container": "#93000a",
+                        "outline-variant": "#c6c6cd",
+                        "error": "#ba1a1a",
+                        "primary-container": "#141b2b",
+                        "primary-fixed-dim": "#c0c6db",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#f8f9fa",
+                        "background": "#f8f9fa",
+                        "on-surface": "#191c1d",
+                        "tertiary-fixed-dim": "#eec200",
+                        "surface-tint": "#575e70",
+                        "surface-container": "#edeeef",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#c0c6db",
+                        "on-secondary-fixed-variant": "#3d4756",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary-container": "#d6e0f3",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary": "#ffffff",
+                        "outline": "#76777d",
+                        "on-surface-variant": "#45464c",
+                        "tertiary": "#735c00",
+                        "surface-variant": "#e1e3e4",
+                        "surface-dim": "#d9dadb",
+                        "on-tertiary-container": "#4e3e00",
+                        "on-primary-fixed-variant": "#404758",
+                        "on-primary-container": "#7d8497",
+                        "surface-bright": "#f8f9fa",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#596373"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .clay-extruded {
+            box-shadow: 10px 10px 20px rgba(17, 24, 39, 0.1), -10px -10px 20px #FFFFFF;
+        }
+
+        .clay-involved {
+            box-shadow: inset 6px 6px 12px rgba(0, 0, 0, 0.2), inset -6px -6px 12px rgba(255, 255, 255, 0.05);
+        }
+
+        .clay-navy-involved {
+            box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.4), inset -4px -4px 8px rgba(255, 255, 255, 0.05);
+        }
+
+        .clay-yellow-button {
+            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4), 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #FACC15;
+            cursor: pointer;
+            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.5), 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 0px;
+        }
+    </style>
+</head>
+
+<body class="bg-background font-body text-on-surface selection:bg-tertiary-fixed">
+    <!-- TopNavBar -->
+    <nav
+        class="sticky top-0 z-50 w-full bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-[0_10px_20px_rgba(17,24,39,0.05)] font-inter antialiased tracking-tight">
+        <div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+            <div class="text-2xl font-black text-slate-900 dark:text-slate-50 tracking-tighter">KeralaStory</div>
+            <div class="flex items-center gap-4">
+                <button
+                    class="material-symbols-outlined text-slate-900 dark:text-slate-50 active:scale-95 transition-transform duration-200">account_circle</button>
+            </div>
+        </div>
+    </nav>
+    <main class="max-w-7xl mx-auto px-6 py-12 md:py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <!-- Left Column: Sticky Form -->
+            <div class="md:sticky md:top-28">
+                <div class="bg-primary-container p-8 md:p-12 rounded-xl clay-extruded relative overflow-hidden">
+                    <!-- Subtle Gradient Over Navy -->
+                    <div class="absolute inset-0 bg-gradient-to-b from-[#111827] to-[#141B2B] pointer-events-none">
+                    </div>
+                    <div class="relative z-10">
+                        <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-12 tracking-tighter">
+                            Create Your Kerala Story</h1>
+                        <form class="space-y-10">
+                            <!-- Age Slider -->
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-end">
+                                    <label
+                                        class="text-on-primary-container text-sm font-bold uppercase tracking-widest">Age
+                                        Range</label>
+                                    <span class="text-5xl font-black text-tertiary-fixed-dim tabular-nums">32</span>
+                                </div>
+                                <div class="bg-[#0F172A] p-6 rounded-xl clay-navy-involved">
+                                    <input class="w-full h-2 bg-slate-800 rounded-full appearance-none cursor-pointer"
+                                        max="99" min="18" type="range" value="32" />
+                                </div>
+                            </div>
+                            <!-- Identity Pills -->
+                            <div class="space-y-4">
+                                <label
+                                    class="text-on-primary-container text-sm font-bold uppercase tracking-widest">Primary
+                                    Identity</label>
+                                <div class="flex flex-wrap gap-3">
+                                    <button
+                                        class="px-6 py-3 rounded-full bg-tertiary-fixed text-on-tertiary-container font-bold text-sm shadow-lg ring-2 ring-tertiary-fixed/20 transition-all"
+                                        type="button">Farmer</button>
+                                    <button
+                                        class="px-6 py-3 rounded-full bg-[#1F2937] text-slate-400 font-bold text-sm clay-navy-involved hover:text-white transition-colors"
+                                        type="button">Fisherman</button>
+                                    <button
+                                        class="px-6 py-3 rounded-full bg-[#1F2937] text-slate-400 font-bold text-sm clay-navy-involved hover:text-white transition-colors"
+                                        type="button">Student</button>
+                                    <button
+                                        class="px-6 py-3 rounded-full bg-[#1F2937] text-slate-400 font-bold text-sm clay-navy-involved hover:text-white transition-colors"
+                                        type="button">Artisan</button>
+                                </div>
+                            </div>
+                            <!-- Priority Pills -->
+                            <div class="space-y-4">
+                                <label
+                                    class="text-on-primary-container text-sm font-bold uppercase tracking-widest">Growth
+                                    Priorities</label>
+                                <div class="flex flex-wrap gap-3">
+                                    <div
+                                        class="flex items-center gap-2 px-5 py-3 rounded-full bg-slate-800/50 text-slate-100 font-medium text-sm border border-white/5">
+                                        <span class="material-symbols-outlined text-sm"
+                                            style="font-variation-settings: 'FILL' 1;">health_and_safety</span>
+                                        Health
+                                    </div>
+                                    <div
+                                        class="flex items-center gap-2 px-5 py-3 rounded-full bg-slate-800/50 text-slate-100 font-medium text-sm border border-white/5">
+                                        <span class="material-symbols-outlined text-sm"
+                                            style="font-variation-settings: 'FILL' 1;">school</span>
+                                        Education
+                                    </div>
+                                    <div
+                                        class="flex items-center gap-2 px-5 py-3 rounded-full bg-slate-800/50 text-slate-100 font-medium text-sm border border-white/5">
+                                        <span class="material-symbols-outlined text-sm"
+                                            style="font-variation-settings: 'FILL' 1;">add</span>
+                                        Add Priority
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- CTA Button -->
+                            <button
+                                class="w-full bg-[#FACC15] hover:bg-[#EAB308] text-[#141B2B] font-black text-lg py-6 rounded-xl transition-all active:scale-[0.98] clay-yellow-button flex items-center justify-center gap-3"
+                                type="button">
+                                <span class="material-symbols-outlined"
+                                    style="font-variation-settings: 'FILL' 1;">stars</span>
+                                ★ GENERATE MY CARD
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column: Live Preview -->
+            <div class="space-y-8">
+                <div class="sticky top-28">
+                    <div class="bg-surface p-1 rounded-xl clay-involved">
+                        <div
+                            class="bg-white rounded-xl p-8 md:p-12 clay-extruded border border-white relative overflow-hidden min-h-[600px] flex flex-col justify-between">
+                            <!-- Card Header -->
+                            <div class="flex justify-between items-start relative z-10">
+                                <div class="space-y-1">
+                                    <div class="text-xs font-black tracking-[0.2em] text-on-surface-variant uppercase">
+                                        Beneficiary Profile</div>
+                                    <h2 class="text-3xl font-black text-on-surface tracking-tighter">Radhakrishnan Nair
+                                    </h2>
+                                </div>
+                                <div
+                                    class="w-16 h-16 bg-surface-container rounded-lg clay-involved flex items-center justify-center">
+                                    <span
+                                        class="material-symbols-outlined text-3xl text-primary opacity-20">qr_code_2</span>
+                                </div>
+                            </div>
+                            <!-- Card Graphic -->
+                            <div class="relative w-full aspect-video rounded-xl overflow-hidden my-8 clay-involved">
+                                <img class="w-full h-full object-cover grayscale opacity-80 mix-blend-multiply"
+                                    data-alt="Scenic landscape of Kerala backwaters with a traditional boat"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFkJK0dzrc5NY56kM4f7OVJSqvaBpwzja3JfyaprjylCgDaMI7PYJBbPcmxVE7kYVinLyzQpgW9VLHwVXB4pTpt1vp0VSJqocXhMfY-cOos6DWTa8fmnEobtOPqwVtAwTXoTFSlsS6zfNPsvoKc7jQ0EOdOLncFrOI8_DoSaX-0LaMSnuECHrScakJpIlP1Jc8RenBPx1ALuqaHPqEqw6eH0mklufs8sRpfXuJ8vC3CbE2Y0sePWewOq1tboo0GDURbhr_nMa49MyP" />
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent">
+                                </div>
+                                <div class="absolute bottom-6 left-6">
+                                    <span
+                                        class="bg-tertiary-fixed text-on-tertiary-container px-4 py-1 rounded-full text-[10px] font-black tracking-widest uppercase">Verified
+                                        Resident</span>
+                                </div>
+                            </div>
+                            <!-- Card Data -->
+                            <div class="grid grid-cols-2 gap-8 relative z-10">
+                                <div>
+                                    <div class="text-[10px] font-bold text-outline uppercase tracking-widest mb-2">Age /
+                                        Identity</div>
+                                    <div class="text-xl font-bold text-on-surface">32 <span
+                                            class="text-outline mx-2">/</span> Farmer</div>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] font-bold text-outline uppercase tracking-widest mb-2">Issue
+                                        Date</div>
+                                    <div class="text-xl font-bold text-on-surface">Oct 2024</div>
+                                </div>
+                            </div>
+                            <!-- Footer Stats -->
+                            <div
+                                class="mt-12 pt-8 border-t border-surface-container-highest flex justify-between items-center relative z-10">
+                                <div class="flex -space-x-3">
+                                    <div class="w-10 h-10 rounded-full border-4 border-white bg-slate-200">
+                                        <img class="w-full h-full object-cover rounded-full"
+                                            data-alt="Small profile avatar of a person"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9WlX0L07bYexpxkYJKNZCESDXA-CFJYttat9DpNbX1NM-xtULM639Ci4PZS6JLWhkBkwn0Bu_ca-hykwQEIFwaf8wRIpFowHcLKKqboEzEAClllvIoMp_JLrNKSN8eYB61CQsS1dH7xerubrrBvhDgkS7hRMuDEU2eOaS_N3aOJLJ69CMDIlSHUJXyOV6rodO_hdqtZ6VqqR49WaHLzzmtYkHtvkZtZcrGWV_OI2nVLipmiB8je9LAHFWrRDzpGMOcECDwfbBvz6A" />
+                                    </div>
+                                    <div class="w-10 h-10 rounded-full border-4 border-white bg-slate-300">
+                                        <img class="w-full h-full object-cover rounded-full"
+                                            data-alt="Small profile avatar of another person"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGRi0P64CgpjNq_vuaet-N8MREwgeW95FZw3QF3_6PUQD066nZubgGxRyNSEfMAG4oeNOb0vojsRe9qM9V8Q1smLHYeNoQp00MXktjRbLG63vk5-BUcU-1K7LUr4fbJ1_cnF5ZnDEZxVENRcWMeAuwN6Yobozsa3xxa1gjCDRZT_sJui2Hin72FEeKbLZmAYadxYEwXX9my5Z4XBq_q15dj4CLmX1oai8H6nyTEeY_gulyc0zDdV4Viggle65G5l05yPL6F7lMSB-f" />
+                                    </div>
+                                </div>
+                                <div class="text-[10px] font-black text-on-surface-variant flex items-center gap-2">
+                                    <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+                                    LIVE PREVIEW MODE
+                                </div>
+                            </div>
+                            <!-- Background Texture Decorative -->
+                            <div
+                                class="absolute -bottom-24 -right-24 w-64 h-64 bg-surface-container-low rounded-full blur-3xl opacity-50">
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-6 text-center text-sm font-medium text-on-surface-variant italic">"Your digital
+                        identity is the seed for your future growth."</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full py-12 bg-transparent text-sm font-medium leading-relaxed font-body">
+        <div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-4">
+            <div class="text-slate-400 dark:text-slate-600">© 2024 KeralaStory. All rights reserved.</div>
+            <div class="flex gap-8">
+                <a class="text-slate-400 dark:text-slate-600 hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
+                    href="#">Privacy Policy</a>
+                <a class="text-slate-400 dark:text-slate-600 hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
+                    href="#">Terms of Service</a>
+                <a class="text-slate-400 dark:text-slate-600 hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
+                    href="#">Help Center</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
