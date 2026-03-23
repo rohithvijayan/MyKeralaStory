@@ -67,14 +67,12 @@ const identities = [
     { id: "farmer", label: "Farmer", icon: "🌾" },
     { id: "worker", label: "Worker / Labour", icon: "🔨" },
     { id: "woman", label: "Woman", icon: "👩" },
-    { id: "fisherfolk", label: "Fisherfolk", icon: "🎣" },
-    { id: "tribal", label: "Adivasi / Tribal", icon: "🌿" },
     { id: "senior", label: "Senior Citizen", icon: "👴" },
-    { id: "small_biz", label: "Small Business", icon: "🏪" },
-    { id: "disabled", label: "Person with Disability", icon: "♿" },
-    { id: "youth", label: "Youth / Unemployed", icon: "⚡" },
-    { id: "it_pro", label: "IT / Tech Pro", icon: "💻" },
-    { id: "startup", label: "Startup / Entrepreneur", icon: "🚀" }
+    { id: "merchant", label: "Merchant", icon: "🏪" },
+    { id: "disabled", label: "Differently Abled", icon: "♿" },
+    { id: "youth", label: "Youth", icon: "⚡" },
+    { id: "techie", label: "Techie", icon: "💻" },
+    { id: "startup", label: "Entrepreneur", icon: "🚀" }
 ];
 
 const priorities = [

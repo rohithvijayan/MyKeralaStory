@@ -681,7 +681,7 @@
             left: -9999px;
             top: 0;
             width: 400px;
-            height: 711px;
+            height: 720px;
             /* 9:16 aspect */
             background: #000;
             overflow: hidden;
@@ -705,16 +705,16 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--gold);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             border-bottom: 1px solid rgba(212, 168, 67, 0.3);
-            padding-bottom: 8px;
+            padding-bottom: 6px;
         }
 
         .wrapped-title {
             font-family: 'Racing Sans One', sans-serif;
-            font-size: 2.8rem;
-            line-height: 1;
-            margin-bottom: 12px;
+            font-size: 2.5rem;
+            line-height: 1.1;
+            margin-bottom: 10px;
             font-style: italic;
         }
 
@@ -722,9 +722,9 @@
             font-size: 1rem;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            padding: 10px 18px;
+            padding: 8px 16px;
             border-radius: 100px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             width: fit-content;
         }
 
@@ -742,7 +742,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            gap: 15px;
+            gap: 12px;
         }
 
         .wrapped-item {
@@ -759,13 +759,13 @@
 
         .wrapped-item .name {
             font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 1px;
+            font-size: 0.95rem;
+            margin-bottom: 0px;
             line-height: 1.2;
         }
 
         .wrapped-item .desc {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             opacity: 0.7;
             line-height: 1.3;
         }
@@ -776,12 +776,15 @@
             padding-top: 20px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
         }
 
         .wrapped-footer .cta {
-            font-family: 'Racing Sans One', sans-serif;
+            font-family: 'Anek Malayalam', sans-serif;
+            font-weight: 800;
+            font-style: italic;
             font-size: 1.4rem;
+            text-align: center;
         }
 
         .wrapped-footer .brand {
@@ -1077,16 +1080,14 @@
                         <div class="pills" id="identity-pills">
                             <div class="pill" onclick="togglePill(this,'student')">� Student</div>
                             <div class="pill" onclick="togglePill(this,'farmer')">🌾 Farmer</div>
-                            <div class="pill" onclick="togglePill(this,'worker')">� Worker / Labour</div>
-                            <div class="pill" onclick="togglePill(this,'fisherfolk')">🎣 Fisherfolk</div>
-                            <div class="pill" onclick="togglePill(this,'tribal')">🌿 Adivasi / Tribal</div>
+                            <div class="pill" onclick="togglePill(this,'worker')">🔨 Worker / Labour</div>
                             <div class="pill" onclick="togglePill(this,'senior')">👴 Senior Citizen</div>
-                            <div class="pill" onclick="togglePill(this,'small_biz')">🏪 Small Business</div>
-                            <div class="pill" onclick="togglePill(this,'disabled')">♿ Person with Disability</div>
-                            <div class="pill" onclick="togglePill(this,'youth')">⚡ Youth / Unemployed</div>
-                            <div class="pill" onclick="togglePill(this,'it_pro')">💻 IT / Tech Pro</div>
-                            <div class="pill" onclick="togglePill(this,'startup')">🚀 Startup / Entrepreneur</div>
-                            <div class="pill" onclick="togglePill(this,'business')">💼 Merchant / Business</div>
+                            <div class="pill" onclick="togglePill(this,'merchant')">🏪 Merchant</div>
+                            <div class="pill" onclick="togglePill(this,'disabled')">♿ Differently Abled</div>
+                            <div class="pill" onclick="togglePill(this,'youth')">⚡ Youth</div>
+                            <div class="pill" onclick="togglePill(this,'techie')">💻 Techie</div>
+                            <div class="pill" onclick="togglePill(this,'startup')">🚀 Entrepreneur</div>
+                            <div class="pill" onclick="togglePill(this,'business')">💼 Business Owner</div>
                             <div class="pill" onclick="togglePill(this,'rural')">🏡 Rural Resident</div>
                             <div class="pill" onclick="togglePill(this,'digital')">🎨 Digital Native</div>
                         </div>
@@ -1149,7 +1150,7 @@
     <!-- Hidden Template for html2canvas -->
     <div class="wrapped-container">
         <div class="wrapped-card" id="wrapped-card-template">
-            <div class="wrapped-logo">LDF Story 2024</div>
+            <div class="wrapped-logo">Decade Of Progress</div>
             <div class="wrapped-title">Your Ten Year<br>journey.</div>
             <div class="wrapped-profile" id="wrapped-profile-text">Age 28 | IT Professional</div>
 
@@ -1159,8 +1160,7 @@
             </div>
 
             <div class="wrapped-footer">
-                <div class="cta">LDF <span>★</span> 2024</div>
-                <div class="brand">Building Keralam<br>Together</div>
+                <div class="cta">മറ്റാരുണ്ട് LDF അല്ലാതെ</div>
             </div>
         </div>
     </div>
@@ -1170,9 +1170,24 @@
         // ═══════════════════════════════════════════════════════
         // SCHEMES DATA
         // ═══════════════════════════════════════════════════════
-        let ALL_SCHEMES = window.ALL_SCHEMES_DATA || [
-            { name: "Karunya Health Scheme", year: 2012, sector: "health", tags: ["worker", "farmer", "woman", "senior"], emotional: "No family should lose a loved one because they couldn't afford treatment." }
-        ];
+        let ALL_SCHEMES = [];
+        let SCHEMES_EN = [];
+        let SCHEMES_ML = [];
+
+        // Load English data
+        if (window.ALL_SCHEMES_DATA) {
+            SCHEMES_EN = window.ALL_SCHEMES_DATA;
+            ALL_SCHEMES = SCHEMES_EN;
+        }
+
+        // Fetch Malayalam data
+        fetch('public/schemesInmalayalam.json')
+            .then(res => res.json())
+            .then(data => {
+                SCHEMES_ML = data;
+                if (currentLang === 'ml') ALL_SCHEMES = SCHEMES_ML;
+            })
+            .catch(err => console.error('Error loading ML schemes:', err));
 
         let selectedIdentities = [];
         let selectedPriorities = [];
@@ -1261,16 +1276,19 @@
 
         function getFallbackNarrative(age, identity, schemes) {
             const schemeName = (currentLang === 'ml' && schemes[0]?.name_ml) ? schemes[0].name_ml : (schemes[0]?.name || 'LIFE Mission');
+            const idDisplay = PILL_LABELS[identity]?.[currentLang] || identity;
             if (currentLang === 'ml') {
-                const id_ml = PILL_LABELS[identity]?.ml || identity;
-                return `കേരളത്തിലെ ഒരു ${id_ml} എന്ന നിലയിൽ, കഴിഞ്ഞ ഒരു പതിറ്റാണ്ടിലെ യഥാർത്ഥ മാറ്റങ്ങൾ നിങ്ങൾ കണ്ടിട്ടുണ്ട്. ${schemeName} പോലുള്ള പദ്ധതികളിലൂടെ എൽ.ഡി.എഫ് സർക്കാർ നിങ്ങളെ ചേർത്തുപിടിച്ചു. ഈ മാറ്റങ്ങൾ തുടരാൻ നിങ്ങളുടെ വോട്ട് അത്യാവശ്യമാണ്.`;
+                return `കേരളത്തിലെ ഒരു ${idDisplay} എന്ന നിലയിൽ, കഴിഞ്ഞ ഒരു പതിറ്റാണ്ടിലെ യഥാർത്ഥ മാറ്റങ്ങൾ നിങ്ങൾ കണ്ടിട്ടുണ്ട്. ${schemeName} പോലുള്ള പദ്ധതികളിലൂടെ എൽ.ഡി.എഫ് സർക്കാർ നിങ്ങളെ ചേർത്തുപിടിച്ചു. ഈ മാറ്റങ്ങൾ തുടരാൻ നിങ്ങളുടെ വോട്ട് അത്യാവശ്യമാണ്.`;
             }
-            return `As a ${identity} in Keralam, you have seen a decade of real, tangible change. The LDF government invested in you through programmes like ${schemeName}. Your vote ensures this story continues.`;
+            return `As a ${idDisplay} in Keralam, you have seen a decade of real, tangible change. The LDF government invested in you through programmes like ${schemeName}. Your vote ensures this story continues.`;
         }
 
         function showResult(age, identity, schemes, narrative) {
+            const idDisplay = PILL_LABELS[identity]?.[currentLang] || identity;
             document.getElementById('result-title').textContent = `Keralam's Promise to You, at ${age}`;
-            document.getElementById('result-subtitle').textContent = `As a ${identity.toUpperCase()} — here's what LDF built for you`;
+            document.getElementById('result-subtitle').textContent = currentLang === 'ml'
+                ? `${idDisplay} എന്ന നിലയിൽ — എൽ.ഡി.എഫ് നിങ്ങൾക്കായി ചെയ്തത്`
+                : `As a ${idDisplay} — here's what LDF built for you`;
 
             const narEl = document.getElementById('narrative-text');
             narEl.textContent = '';
@@ -1306,7 +1324,7 @@
 
         function updateWrappedCard(age, identity, schemes) {
             const ageLabel = currentLang === 'ml' ? TRANSLATIONS.ml.wrapped_profile : TRANSLATIONS.en.wrapped_profile;
-            const idLabel = (currentLang === 'ml' && PILL_LABELS[identity]) ? PILL_LABELS[identity].ml : identity.toUpperCase();
+            const idLabel = PILL_LABELS[identity]?.[currentLang] || identity;
             document.getElementById('wrapped-profile-text').textContent = `${ageLabel} ${age} | ${idLabel}`;
             const list = document.getElementById('wrapped-items-list');
             list.innerHTML = '';
@@ -1413,7 +1431,7 @@
                 wrapped_title: "Your Ten Year journey.",
                 wrapped_profile: "Age",
                 wrapped_subtitle: "Top 3 Achievements for You",
-                wrapped_footer_cta: "LDF ★ 2024",
+                wrapped_footer_cta: "മറ്റാരുണ്ട് LDF അല്ലാതെ",
                 wrapped_footer_brand: "Building Keralam Together",
                 scroll_indicator: "Scroll to Start"
             },
@@ -1440,7 +1458,7 @@
                 wrapped_title: "നിങ്ങളുടെ പത്ത് വർഷത്തെ യാത്ര.",
                 wrapped_profile: "പ്രായം",
                 wrapped_subtitle: "നിങ്ങൾക്കായുള്ള മികച്ച 3 നേട്ടങ്ങൾ",
-                wrapped_footer_cta: "എൽ.ഡി.എഫ് ★ 2024",
+                wrapped_footer_cta: "മറ്റാരുണ്ട് LDF അല്ലാതെ",
                 wrapped_footer_brand: "നമുക്ക് ഒന്നിച്ച് മുന്നേറാം",
                 scroll_indicator: "തുടങ്ങാൻ താഴേക്ക് സ്ക്രോൾ ചെയ്യുക"
             }
@@ -1449,18 +1467,16 @@
         const PILL_LABELS = {
             student: { en: "🎓 Student", ml: "🎓 വിദ്യാർത്ഥി" },
             farmer: { en: "🌾 Farmer", ml: "🌾 കർഷകൻ" },
-            worker: { en: "🔨 Worker / Labour", ml: "🔨 തൊഴിലാളി" },
+            worker: { en: "🔨 Worker", ml: "🔨 തൊഴിലാളി" },
             woman: { en: "👩 Woman", ml: "👩 സ്ത്രീ" },
             man: { en: "👨 Man", ml: "👨 പുരുഷൻ" },
-            fisherfolk: { en: "🎣 Fisherfolk", ml: "🎣 മത്സ്യത്തൊഴിലാളി" },
-            tribal: { en: "🌿 Adivasi / Tribal", ml: "🌿 ആദിവാസി / ഗോത്രവർഗ്ഗം" },
             senior: { en: "👴 Senior Citizen", ml: "👴 മുതിർന്ന പൗരൻ" },
-            small_biz: { en: "🏪 Small Business", ml: "🏪 ചെറുകിട സംരംഭകൻ" },
-            disabled: { en: "♿ Person with Disability", ml: "♿ ഭിന്നശേഷിക്കാർ" },
-            youth: { en: "⚡ Youth / Unemployed", ml: "⚡ യുവാക്കൾ / തൊഴിൽരഹിതർ" },
-            it_pro: { en: "💻 IT / Tech Pro", ml: "💻 ഐടി പ്രൊഫഷണൽ" },
-            startup: { en: "🚀 Startup / Entrepreneur", ml: "🚀 സ്റ്റാർട്ടപ്പ് / സംരംഭകൻ" },
-            business: { en: "💼 Merchant / Business", ml: "💼 വ്യാപാരി / ബിസിനസ്സ്" },
+            merchant: { en: "🏪 Merchant", ml: "🏪 ചെറുകിട വ്യാപാരി" },
+            disabled: { en: "♿ Differently Abled", ml: "♿ ഭിന്നശേഷിക്കാർ" },
+            youth: { en: "⚡ Youth", ml: "⚡ യുവാക്കൾ" },
+            techie: { en: "💻 Techie", ml: "💻 ഐടി വിദഗ്ധൻ" },
+            startup: { en: "🚀 Entrepreneur", ml: "🚀 സംരംഭകൻ" },
+            business: { en: "💼 Business Owner", ml: "💼 ബിസിനസ്സ് ഉടമ" },
             rural: { en: "🏡 Rural Resident", ml: "🏡 ഗ്രാമവാസി" },
             digital: { en: "🎨 Digital Native", ml: "🎨 ഡിജിറ്റൽ നേറ്റീവ്" },
             health: { en: "❤️ Health", ml: "❤️ ആരോഗ്യം" },
@@ -1506,6 +1522,9 @@
             document.querySelectorAll('.share-btn')[2].querySelector('span').textContent = TRANSLATIONS[lang].twitter_btn;
             document.querySelector('.reset-btn').textContent = TRANSLATIONS[lang].reset_btn;
 
+            // Update data source
+            ALL_SCHEMES = lang === 'ml' ? (SCHEMES_ML.length ? SCHEMES_ML : SCHEMES_EN) : SCHEMES_EN;
+
             // Right Intro
             document.getElementById('right-caption').innerHTML = TRANSLATIONS[lang].right_caption;
             document.getElementById('right-subtext').textContent = TRANSLATIONS[lang].right_subtext;
@@ -1534,7 +1553,7 @@
             p.dataset.id = ids[i];
         });
         document.querySelectorAll('#identity-pills .pill').forEach((p, i) => {
-            const ids = ['student', 'farmer', 'worker', 'fisherfolk', 'tribal', 'senior', 'small_biz', 'disabled', 'youth', 'it_pro', 'startup', 'business', 'rural', 'digital'];
+            const ids = ['student', 'farmer', 'worker', 'senior', 'merchant', 'disabled', 'youth', 'techie', 'startup', 'business', 'rural', 'digital'];
             p.dataset.id = ids[i];
         });
         document.querySelectorAll('#priority-pills .pill').forEach((p, i) => {

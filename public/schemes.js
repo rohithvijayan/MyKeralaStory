@@ -23,8 +23,8 @@ window.ALL_SCHEMES_DATA = [
     "tags": [
       "student",
       "youth",
-      "small_biz",
-      "it_pro",
+      "merchant",
+      "techie",
       "startup",
       "digital"
     ],
@@ -174,7 +174,7 @@ window.ALL_SCHEMES_DATA = [
     "tags": [
       "woman",
       "worker",
-      "small_biz",
+      "merchant",
       "rural"
     ],
     "short": "Massive women's empowerment network providing affordable meals, micro-enterprise support, and social care.",
@@ -187,7 +187,7 @@ window.ALL_SCHEMES_DATA = [
     "tags": [
       "startup",
       "youth",
-      "it_pro",
+      "techie",
       "digital"
     ],
     "short": "India's best startup ecosystem supporting over 4,681 startups with funding, incubation, and infrastructure.",
@@ -198,7 +198,7 @@ window.ALL_SCHEMES_DATA = [
     "year": 2021,
     "sector": "infrastructure",
     "tags": [
-      "it_pro",
+      "techie",
       "youth",
       "business"
     ],
@@ -211,7 +211,7 @@ window.ALL_SCHEMES_DATA = [
     "sector": "industry",
     "tags": [
       "business",
-      "small_biz",
+      "merchant",
       "startup"
     ],
     "short": "Single-window clearance interface and centralized inspection system for rapid enterprise approvals.",
@@ -236,7 +236,7 @@ window.ALL_SCHEMES_DATA = [
     "tags": [
       "farmer",
       "rural",
-      "small_biz"
+      "merchant"
     ],
     "short": "Consolidation of district and state co-operative banks to form a unified, powerful state bank.",
     "emotional": "A bank of our own, securing the financial future of every Keralite."
@@ -259,7 +259,7 @@ window.ALL_SCHEMES_DATA = [
     "sector": "industry",
     "tags": [
       "business",
-      "small_biz",
+      "merchant",
       "startup"
     ],
     "short": "Initiative to scale up 1000 MSMEs into ventures with Rs 100 crore average turnover in four years.",
@@ -319,7 +319,7 @@ window.ALL_SCHEMES_DATA = [
     "sector": "employment",
     "tags": [
       "youth",
-      "it_pro",
+      "techie",
       "student"
     ],
     "short": "Creating gainful employment for educated youth through skill strengthening and local/global demand facilitation.",
@@ -332,7 +332,7 @@ window.ALL_SCHEMES_DATA = [
     "tags": [
       "health",
       "startup",
-      "it_pro"
+      "techie"
     ],
     "short": "Rs 100 crore project to create a repository of genetic information for healthcare and agricultural research.",
     "emotional": "Unlocking the secrets of biology to build a healthier Kerala."
@@ -380,7 +380,7 @@ window.ALL_SCHEMES_DATA = [
     "tags": [
       "youth",
       "student",
-      "small_biz"
+      "merchant"
     ],
     "short": "Imparting industry-relevant skill training to lakhs of students through Community Skill Parks.",
     "emotional": "Equipping you with the skills to conquer the global job market."
@@ -438,7 +438,7 @@ window.ALL_SCHEMES_DATA = [
     "sector": "employment",
     "tags": [
       "youth",
-      "small_biz",
+      "merchant",
       "rural"
     ],
     "short": "Micro-level platform identifying job seekers on a ward basis to link them with employment and entrepreneurship.",
@@ -474,7 +474,7 @@ window.ALL_SCHEMES_DATA = [
     "sector": "infrastructure",
     "tags": [
       "business",
-      "small_biz"
+      "merchant"
     ],
     "short": "Rs 120 crore dedicated platform at Technopark to promote traditional products and GI-tagged items.",
     "emotional": "Showcasing the true spirit and craft of Kerala to the world."
@@ -519,7 +519,7 @@ window.ALL_SCHEMES_DATA = [
     "sector": "industry",
     "tags": [
       "business",
-      "it_pro",
+      "techie",
       "infrastructure"
     ],
     "short": "Rs 90 crore land acquisition project to develop an electronic hardware manufacturing hub.",
