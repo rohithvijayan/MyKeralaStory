@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LDF — Kerala's Promise to You</title>
+    <title>LDF — Keralam's Promise to You</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -976,7 +976,7 @@
             <div class="portrait-overlay"></div>
 
             <div class="split-left-content">
-                <div class="ldf-emblem">Left Democratic Front · Kerala</div>
+                <div class="ldf-emblem">Left Democratic Front · Keralam</div>
                 <h1>Why should <em>you</em> vote for LDF?</h1>
                 <p>10 years of governance. Tell us who you are — and we’ll show you exactly what we’ve done <em>for
                         you</em>.
@@ -994,7 +994,7 @@
         <div class="split-right">
             <div class="right-intro">
                 <h2 id="right-caption">Who Else Than LDF</h2>
-                <p id="right-subtext">Over the last 10 years, Kerala has seen a quiet revolution in welfare and
+                <p id="right-subtext">Over the last 10 years, Keralam has seen a quiet revolution in welfare and
                     progress.
                     See how your journey aligns with the state's growth.</p>
             </div>
@@ -1068,7 +1068,7 @@
             <section id="result">
                 <div class="result-header">
                     <div class="tag">Personalised for You</div>
-                    <h3 id="result-title">Kerala's Promise to You</h3>
+                    <h3 id="result-title">Keralam's Promise to You</h3>
                     <p id="result-subtitle">Based on your profile, here's what LDF has done</p>
                 </div>
                 <div class="narrative-box">
@@ -1107,7 +1107,7 @@
 
             <div class="wrapped-footer">
                 <div class="cta">LDF <span>★</span> 2024</div>
-                <div class="brand">Building Kerala<br>Together</div>
+                <div class="brand">Building Keralam<br>Together</div>
             </div>
         </div>
     </div>
@@ -1223,11 +1223,11 @@
                 const id_ml = PILL_LABELS[identity]?.ml || identity;
                 return `കേരളത്തിലെ ഒരു ${id_ml} എന്ന നിലയിൽ, കഴിഞ്ഞ ഒരു പതിറ്റാണ്ടിലെ യഥാർത്ഥ മാറ്റങ്ങൾ നിങ്ങൾ കണ്ടിട്ടുണ്ട്. ${schemeName} പോലുള്ള പദ്ധതികളിലൂടെ എൽ.ഡി.എഫ് സർക്കാർ നിങ്ങളെ ചേർത്തുപിടിച്ചു. ഈ മാറ്റങ്ങൾ തുടരാൻ നിങ്ങളുടെ വോട്ട് അത്യാവശ്യമാണ്.`;
             }
-            return `As a ${identity} in Kerala, you have seen a decade of real, tangible change. The LDF government invested in you through programmes like ${schemeName}. Your vote ensures this story continues.`;
+            return `As a ${identity} in Keralam, you have seen a decade of real, tangible change. The LDF government invested in you through programmes like ${schemeName}. Your vote ensures this story continues.`;
         }
 
         function showResult(age, identity, schemes, narrative) {
-            document.getElementById('result-title').textContent = `Kerala's Promise to You, at ${age}`;
+            document.getElementById('result-title').textContent = `Keralam's Promise to You, at ${age}`;
             document.getElementById('result-subtitle').textContent = `As a ${identity.toUpperCase()} — here's what LDF built for you`;
 
             const narEl = document.getElementById('narrative-text');
@@ -1244,7 +1244,7 @@
                 const yearDisplay = (s.year && !String(s.year).toLowerCase().includes('not specified')) ? s.year : '';
 
                 const displayName = (currentLang === 'ml' && s.name_ml) ? s.name_ml : s.name;
-                const displayEmo = (currentLang === 'ml' && s.emotional_ml) ? s.emotional_ml : (s.emotional || s.short || s.desc || (currentLang === 'ml' ? 'കേരളത്തിന്റെ ജീവിതം മാറ്റിമറിക്കുന്നു.' : 'Transforming lives in Kerala.'));
+                const displayEmo = (currentLang === 'ml' && s.emotional_ml) ? s.emotional_ml : (s.emotional || s.short || s.desc || (currentLang === 'ml' ? 'കേരളത്തിന്റെ ജീവിതം മാറ്റിമറിക്കുന്നു.' : 'Transforming lives in Keralam.'));
 
                 card.innerHTML = `
                     <div class="scheme-tag">${sectorLabel} <span class="year">${yearDisplay}</span></div>
@@ -1274,7 +1274,7 @@
                 item.style.animationDelay = `${0.3 + i * 0.1}s`;
 
                 const displayName = (currentLang === 'ml' && s.name_ml) ? s.name_ml : s.name;
-                const displayEmo = (currentLang === 'ml' && s.emotional_ml) ? s.emotional_ml : (s.emotional || s.short || 'Transforming Kerala.');
+                const displayEmo = (currentLang === 'ml' && s.emotional_ml) ? s.emotional_ml : (s.emotional || s.short || 'Transforming Keralam.');
 
                 item.innerHTML = `
                     <span class="num">0${i + 1}</span>
@@ -1303,7 +1303,7 @@
                     await navigator.share({
                         files: [file],
                         title: 'My LDF Wrapped 2024',
-                        text: 'Check out how LDF has transformed Kerala for me! #LDFWrapped #KeralaPromise'
+                        text: 'Check out how LDF has transformed Keralam for me! #LDFWrapped #KeralamPromise'
                     });
                 } else {
                     downloadCard();
@@ -1328,7 +1328,7 @@
         }
 
         function shareToTwitter() {
-            const text = encodeURIComponent("Check out my Kerala Story! 10 years of LDF governance personalized for me. #LDFWrapped #KeralaPromise");
+            const text = encodeURIComponent("Check out my Keralam Story! 10 years of LDF governance personalized for me. #LDFWrapped #KeralamPromise");
             window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
         }
 
@@ -1359,20 +1359,20 @@
                 priority_label: "What matters most to you?",
                 submit_btn: "★ Show My LDF Story",
                 result_personalised: "Personalised for You",
-                result_title: "Kerala's Promise to You",
+                result_title: "Keralam's Promise to You",
                 result_subtitle: "Based on your profile, here's what LDF has done",
                 share_btn: "📸 Share Your Story Card",
                 download_btn: "⬇️ Download Image",
                 twitter_btn: "🐦 Share on X",
                 reset_btn: "← Try Another Profile",
                 right_caption: "Who Else Than LDF",
-                right_subtext: "Over the last 10 years, Kerala has seen a quiet revolution in welfare and progress. See how your journey aligns with the state's growth.",
+                right_subtext: "Over the last 10 years, Keralam has seen a quiet revolution in welfare and progress. See how your journey aligns with the state's growth.",
                 wrapped_logo: "LDF Story 2024",
                 wrapped_title: "Your Ten Year journey.",
                 wrapped_profile: "Age",
                 wrapped_subtitle: "Top 3 Achievements for You",
                 wrapped_footer_cta: "LDF ★ 2024",
-                wrapped_footer_brand: "Building Kerala Together"
+                wrapped_footer_brand: "Building Keralam Together"
             },
             ml: {
                 hero_title: "എന്തുകൊണ്ട് <em>നിങ്ങൾ</em> എൽ.ഡി.എഫിന് വോട്ട് ചെയ്യണം?",
