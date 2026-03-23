@@ -1112,25 +1112,14 @@
         </div>
     </div>
 
+    <script src="schemes.js"></script>
     <script>
         // ═══════════════════════════════════════════════════════
         // SCHEMES DATA
         // ═══════════════════════════════════════════════════════
-        let ALL_SCHEMES = [];
-
-        async function loadSchemes() {
-            try {
-                const res = await fetch('schemes.json');
-                ALL_SCHEMES = await res.json();
-            } catch (e) {
-                console.error("Failed to load schemes.json", e);
-                // Basic fallback if fetch fails
-                ALL_SCHEMES = [
-                    { name: "Karunya Health Scheme", year: 2012, sector: "health", tags: ["worker", "farmer", "woman", "senior"], emotional: "No family should lose a loved one because they couldn't afford treatment." }
-                ];
-            }
-        }
-        loadSchemes();
+        let ALL_SCHEMES = window.ALL_SCHEMES_DATA || [
+            { name: "Karunya Health Scheme", year: 2012, sector: "health", tags: ["worker", "farmer", "woman", "senior"], emotional: "No family should lose a loved one because they couldn't afford treatment." }
+        ];
 
         let selectedIdentities = [];
         let selectedPriorities = [];
