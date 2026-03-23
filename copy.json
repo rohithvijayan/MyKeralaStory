@@ -1,0 +1,166 @@
+{
+    "translations": {
+        "en": {
+            "hero_title": "Why should <em>you</em> vote for LDF?",
+            "hero_desc": "10 years of governance. Tell us who you are — and we’ll show you exactly what we’ve done <em>for you</em>.",
+            "form_title": "Your Story Starts Here",
+            "form_subtitle": "Share a little about yourself to see how LDF's work has shaped your life.",
+            "age_label": "Your Age",
+            "gender_label": "Gender",
+            "identity_label": "I am a…",
+            "priority_label": "What matters most to you?",
+            "submit_btn": "★ Show My LDF Story",
+            "result_personalised": "Personalised for You",
+            "result_title": "Kerala's Promise to You",
+            "result_subtitle": "Based on your profile, here's what LDF has done",
+            "share_btn": "📸 Share Your Story Card",
+            "download_btn": "⬇️ Download Image",
+            "twitter_btn": "🐦 Share on X",
+            "reset_btn": "← Try Another Profile",
+            "right_caption": "Who Else Than LDF",
+            "right_subtext": "Over the last 10 years, Kerala has seen a quiet revolution in welfare and progress. See how your journey aligns with the state's growth.",
+            "wrapped_logo": "LDF Story 2024",
+            "wrapped_title": "Your Ten Year journey.",
+            "wrapped_profile": "Age",
+            "wrapped_subtitle": "Top 3 Achievements for You",
+            "wrapped_footer_cta": "LDF ★ 2024",
+            "wrapped_footer_brand": "Building Kerala Together"
+        },
+        "ml": {
+            "hero_title": "എന്തുകൊണ്ട് <em>നിങ്ങൾ</em> എൽ.ഡി.എഫിന് വോട്ട് ചെയ്യണം?",
+            "hero_desc": "10 വർഷത്തെ ഭരണം. നിങ്ങൾ ആരാണെന്ന് പറയൂ - ഞങ്ങൾ നിങ്ങൾക്കായി ചെയ്ത കാര്യങ്ങൾ കാണിച്ചു തരാം.",
+            "form_title": "നിങ്ങളുടെ കഥ ഇവിടെ തുടങ്ങുന്നു",
+            "form_subtitle": "നിങ്ങളുടെ ജീവിതത്തെ എൽ.ഡി.എഫിന്റെ പ്രവർത്തനം എങ്ങനെ സ്വാധീനിച്ചു എന്ന് നോക്കാം.",
+            "age_label": "നിങ്ങളുടെ പ്രായം",
+            "gender_label": "ലിംഗം",
+            "identity_label": "ഞാൻ ഒരു...",
+            "priority_label": "നിങ്ങൾക്ക് ഏറ്റവും പ്രധാനപ്പെട്ടത് എന്താണ്?",
+            "submit_btn": "★ എന്റെ എൽ.ഡി.എഫ് കഥ കാണിക്കുക",
+            "result_personalised": "നിങ്ങൾക്കായി തയ്യാറാക്കിയത്",
+            "result_title": "നിങ്ങൾക്കുള്ള കേരളത്തിന്റെ വാഗ്ദാനം",
+            "result_subtitle": "നിങ്ങളുടെ പ്രൊഫൈൽ അനുസരിച്ച് എൽ.ഡി.എഫ് ചെയ്ത കാര്യങ്ങൾ",
+            "share_btn": "📸 സ്റ്റോറി കാർഡ് പങ്കിടുക",
+            "download_btn": "⬇️ ചിത്രം ഡൗൺലോഡ് ചെയ്യുക",
+            "twitter_btn": "🐦 X-ൽ പങ്കിടുക",
+            "reset_btn": "← മറ്റൊരു പ്രൊഫൈൽ നോക്കൂ",
+            "right_caption": "മറ്റാരുണ്ട് LDF അല്ലാതെ ",
+            "right_subtext": "ക്ഷേമത്തിന്റെയും പുരോഗതിയുടെയും ഒരു പുതിയ കേരളം. നിങ്ങളുടെ ജീവിതത്തിലെ മാറ്റങ്ങൾ ഇവിടെ തൊട്ടറിയൂ.",
+            "wrapped_logo": "എൽ.ഡി.എഫ് കഥ 2024",
+            "wrapped_title": "നിങ്ങളുടെ പത്ത് വർഷത്തെ യാത്ര.",
+            "wrapped_profile": "പ്രായം",
+            "wrapped_subtitle": "നിങ്ങൾക്കായുള്ള മികച്ച 3 നേട്ടങ്ങൾ",
+            "wrapped_footer_cta": "എൽ.ഡി.എഫ് ★ 2024",
+            "wrapped_footer_brand": "നമുക്ക് ഒന്നിച്ച് മുന്നേറാം"
+        }
+    },
+    "pill_labels": {
+        "student": {
+            "en": "🎓 Student",
+            "ml": "🎓 വിദ്യാർത്ഥി"
+        },
+        "farmer": {
+            "en": "🌾 Farmer",
+            "ml": "🌾 കർഷകൻ"
+        },
+        "worker": {
+            "en": "🔨 Worker / Labour",
+            "ml": "🔨 തൊഴിലാളി"
+        },
+        "woman": {
+            "en": "👩 Woman",
+            "ml": "👩 സ്ത്രീ"
+        },
+        "man": {
+            "en": "👨 Man",
+            "ml": "👨 പുരുഷൻ"
+        },
+        "fisherfolk": {
+            "en": "🎣 Fisherfolk",
+            "ml": "🎣 മത്സ്യത്തൊഴിലാളി"
+        },
+        "tribal": {
+            "en": "🌿 Adivasi / Tribal",
+            "ml": "🌿 ആദിവാസി / ഗോത്രവർഗ്ഗം"
+        },
+        "senior": {
+            "en": "👴 Senior Citizen",
+            "ml": "👴 മുതിർന്ന പൗരൻ"
+        },
+        "small_biz": {
+            "en": "🏪 Small Business",
+            "ml": "🏪 ചെറുകിട സംരംഭകൻ"
+        },
+        "disabled": {
+            "en": "♿ Person with Disability",
+            "ml": "♿ ഭിന്നശേഷിക്കാർ"
+        },
+        "youth": {
+            "en": "⚡ Youth / Unemployed",
+            "ml": "⚡ യുവാക്കൾ / തൊഴിൽരഹിതർ"
+        },
+        "it_pro": {
+            "en": "💻 IT / Tech Pro",
+            "ml": "💻 ഐടി പ്രൊഫഷണൽ"
+        },
+        "startup": {
+            "en": "🚀 Startup / Entrepreneur",
+            "ml": "🚀 സ്റ്റാർട്ടപ്പ് / സംരംഭകൻ"
+        },
+        "business": {
+            "en": "💼 Merchant / Business",
+            "ml": "💼 വ്യാപാരി / ബിസിനസ്സ്"
+        },
+        "rural": {
+            "en": "🏡 Rural Resident",
+            "ml": "🏡 ഗ്രാമവാസി"
+        },
+        "digital": {
+            "en": "🎨 Digital Native",
+            "ml": "🎨 ഡിജിറ്റൽ നേറ്റീവ്"
+        },
+        "health": {
+            "en": "❤️ Health",
+            "ml": "❤️ ആരോഗ്യം"
+        },
+        "education": {
+            "en": "📚 Education",
+            "ml": "📚 വിദ്യാഭ്യാസം"
+        },
+        "employment": {
+            "en": "💼 Jobs",
+            "ml": "💼 തൊഴിൽ"
+        },
+        "housing": {
+            "en": "🏠 Housing",
+            "ml": "🏠 പാർപ്പിടം"
+        },
+        "welfare": {
+            "en": "🤝 Welfare",
+            "ml": "🤝 ക്ഷേമം"
+        },
+        "infrastructure": {
+            "en": "🛣️ Infrastructure",
+            "ml": "🛣️ അടിസ്ഥാന സൗകര്യങ്ങൾ"
+        },
+        "environment": {
+            "en": "🌿 Environment",
+            "ml": "🌿 പരിസ്ഥിതി"
+        },
+        "science": {
+            "en": "🔬 Science & Tech",
+            "ml": "🔬 ശാസ്ത്ര സാങ്കേതിക വിദ്യ"
+        },
+        "industry": {
+            "en": "🏭 Industry",
+            "ml": "🏭 വ്യവസായം"
+        },
+        "transport": {
+            "en": "🚆 Transport",
+            "ml": "🚆 ഗതാഗതം"
+        },
+        "social_justice": {
+            "en": "⚖️ Justice",
+            "ml": "⚖️ സാമൂഹിക നീതി"
+        }
+    }
+}
