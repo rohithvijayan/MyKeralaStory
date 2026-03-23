@@ -5,9 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LDF — Kerala's Promise to You</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;700;800&family=Racing+Sans+One&family=DM+Sans:wght@300;400;500&display=swap"
         rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         :root {
             --red: #c0392b;
@@ -30,128 +33,242 @@
         }
 
         body {
-            font-family: 'DM Sans', sans-serif;
+            font-family: 'DM Sans', 'Anek Malayalam', sans-serif;
             background: var(--cream);
             color: var(--ink);
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* ─── HERO ─── */
-        .hero {
+        /* Malayalam Bold Overrides */
+        .lang-ml h1,
+        .lang-ml h2,
+        .lang-ml h3,
+        .lang-ml h4,
+        .lang-ml .cta-btn,
+        .lang-ml .wrapped-title {
+            font-family: "Anek Malayalam", sans-serif !important;
+            font-optical-sizing: auto !important;
+            font-weight: 800 !important;
+            font-style: normal !important;
+            font-variation-settings: "wdth" 100 !important;
+        }
+
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            gap: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 4px;
+            border-radius: 100px;
+            backdrop-filter: blur(8px);
+        }
+
+        .lang-btn {
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: white;
+            border: none;
+            background: transparent;
+        }
+
+        .lang-btn.active {
+            background: white;
+            color: var(--red-deep);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .right-intro {
+            padding: 80px 40px 40px;
+            max-width: 680px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .right-intro h2 {
+            font-family: 'Racing Sans One', sans-serif;
+            font-size: 2.8rem;
+            color: var(--red-deep);
+            margin-bottom: 20px;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards 0.2s;
+        }
+
+        .right-intro p {
+            font-size: 1.2rem;
+            color: var(--ink);
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards 0.4s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Fix for Right Intro */
+        @media (max-width: 1024px) {
+            .right-intro {
+                text-align: center;
+                padding-top: 40px;
+            }
+
+            .right-intro h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* ─── SPLIT LAYOUT ─── */
+        .split-wrapper {
+            display: block;
+            min-height: 100vh;
+        }
+
+        @media (min-width: 1024px) {
+            .split-wrapper {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .split-left {
             background: var(--red-deep);
-            background-image:
-                radial-gradient(ellipse at 20% 50%, rgba(192, 57, 43, 0.8) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 20%, rgba(146, 43, 33, 0.6) 0%, transparent 50%),
-                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            padding: 60px 24px 80px;
-            text-align: center;
+            color: white;
             position: relative;
             overflow: hidden;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 60px;
-            background: var(--cream);
-            clip-path: ellipse(55% 100% at 50% 100%);
-        }
-
-        .star-banner {
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            gap: 12px;
+            padding: 60px 40px;
+            text-align: left;
+        }
+
+        @media (min-width: 1024px) {
+            .split-left {
+                position: sticky;
+                top: 0;
+                height: 100vh;
+                padding: 80px;
+            }
+        }
+
+        /* Carousel background */
+        .portrait-carousel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .portrait-carousel .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center 20%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .portrait-carousel .slide.active {
+            opacity: 1;
+        }
+
+        .portrait-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgb(10 10 10 / 40%) 0%, rgba(26, 10, 0, 0.85) 100%);
+            z-index: 2;
+        }
+
+        .split-left-content {
+            position: relative;
+            z-index: 3;
+            max-width: 580px;
+        }
+
+        .split-left h1 {
+            font-family: 'Racing Sans One', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.05;
             margin-bottom: 24px;
+            font-weight: 700;
         }
 
-        .star-banner span {
-            color: var(--gold);
-            font-size: 22px;
-        }
-
-        .star-banner .divider {
-            width: 60px;
-            height: 1px;
-            background: var(--gold);
-            opacity: 0.5;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 5vw, 3.8rem);
-            color: white;
-            line-height: 1.15;
-            margin-bottom: 16px;
-            letter-spacing: -0.5px;
-        }
-
-        .hero h1 em {
+        .split-left h1 em {
             color: var(--gold-light);
             font-style: italic;
         }
 
-        .hero p {
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 1.1rem;
-            max-width: 520px;
-            margin: 0 auto 40px;
-            line-height: 1.7;
+        .split-left p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 32px;
             font-weight: 300;
         }
 
-        .ldf-emblem {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 8px 20px;
-            border-radius: 100px;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.85rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 32px;
-        }
-
-        .ldf-emblem::before {
-            content: '★';
-            color: var(--gold);
+        .split-right {
+            background: var(--cream);
+            padding-bottom: 80px;
         }
 
         /* ─── FORM CARD ─── */
         .form-section {
-            max-width: 680px;
-            margin: -20px auto 0;
-            padding: 0 20px 60px;
+            max-width: 620px;
+            margin: -40px auto 0;
+            padding: 0 20px;
             position: relative;
-            z-index: 2;
+            z-index: 4;
+        }
+
+        @media (min-width: 1024px) {
+            .form-section {
+                margin: 60px auto;
+            }
         }
 
         .form-card {
             background: white;
             border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 36px;
-            box-shadow: 0 8px 40px rgba(26, 10, 0, 0.08), 0 1px 0 rgba(212, 168, 67, 0.3) inset;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 12px 48px rgba(26, 10, 0, 0.08), 0 1px 0 rgba(212, 168, 67, 0.2) inset;
         }
 
         .form-card h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-family: 'Racing Sans One', sans-serif;
+            font-size: 1.6rem;
             color: var(--red-deep);
             margin-bottom: 6px;
         }
 
         .form-card>p {
             color: var(--muted);
-            font-size: 0.9rem;
-            margin-bottom: 28px;
+            font-size: 0.95rem;
+            margin-bottom: 24px;
         }
 
         .field {
@@ -160,12 +277,12 @@
 
         .field label {
             display: block;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 500;
             letter-spacing: 0.08em;
             text-transform: uppercase;
             color: var(--muted);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .field label span {
@@ -174,7 +291,7 @@
 
         /* Age slider */
         .age-display {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Racing Sans One', sans-serif;
             font-size: 2.8rem;
             color: var(--red-deep);
             text-align: center;
@@ -183,7 +300,7 @@
         }
 
         .age-display sup {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--muted);
             font-family: 'DM Sans', sans-serif;
         }
@@ -224,12 +341,13 @@
         }
 
         .pill {
-            padding: 8px 16px;
+            padding: 12px 24px;
             border-radius: 100px;
-            border: 1.5px solid #e0d4c0;
+            border: 1px solid rgba(212, 168, 67, 0.4);
             background: var(--card-bg);
             color: var(--muted);
-            font-size: 0.875rem;
+            font-size: 1.15rem;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.2s;
             user-select: none;
@@ -238,13 +356,14 @@
         .pill:hover {
             border-color: var(--red);
             color: var(--red);
+            background: white;
         }
 
         .pill.active {
             background: var(--red-deep);
             border-color: var(--red-deep);
             color: white;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .cta-btn {
@@ -255,7 +374,7 @@
             border: none;
             border-radius: 12px;
             font-family: 'DM Sans', sans-serif;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.25s;
@@ -358,7 +477,7 @@
         }
 
         .result-header h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Racing Sans One', sans-serif;
             font-size: 1.6rem;
             margin-bottom: 8px;
         }
@@ -423,12 +542,15 @@
         }
 
         .scheme-card .scheme-tag {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             color: var(--gold);
-            font-weight: 600;
-            margin-bottom: 6px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .scheme-card h4 {
@@ -503,102 +625,512 @@
                 padding: 48px 20px 70px;
             }
         }
+
+        /* ─── WRAPPED CARD ─── */
+        .wrapped-container {
+            position: fixed;
+            left: -9999px;
+            top: 0;
+            width: 400px;
+            height: 711px;
+            /* 9:16 aspect */
+            background: #000;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .wrapped-card {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(160deg, #c0392b 0%, #1a0a00 100%);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            position: relative;
+        }
+
+        .wrapped-logo {
+            font-family: 'Racing Sans One', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(212, 168, 67, 0.3);
+            padding-bottom: 8px;
+        }
+
+        .wrapped-title {
+            font-family: 'Racing Sans One', sans-serif;
+            font-size: 2.8rem;
+            line-height: 1;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        .wrapped-profile {
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 10px 18px;
+            border-radius: 100px;
+            margin-bottom: 30px;
+            width: fit-content;
+        }
+
+        .wrapped-subtitle {
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.7rem;
+            color: var(--gold);
+            margin-bottom: 18px;
+            font-weight: 500;
+        }
+
+        .wrapped-items {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 15px;
+        }
+
+        .wrapped-item {
+            animation: fadeInRight 0.5s ease both;
+        }
+
+        .wrapped-item .num {
+            font-family: 'Racing Sans One', sans-serif;
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-bottom: 2px;
+            display: block;
+        }
+
+        .wrapped-item .name {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 1px;
+            line-height: 1.2;
+        }
+
+        .wrapped-item .desc {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            line-height: 1.3;
+        }
+
+        .wrapped-footer {
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .wrapped-footer .cta {
+            font-family: 'Racing Sans One', sans-serif;
+            font-size: 1.4rem;
+        }
+
+        .wrapped-footer .brand {
+            font-size: 0.7rem;
+            text-align: right;
+            opacity: 0.6;
+        }
+
+        .share-actions {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .share-btn {
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .share-btn.primary {
+            background: var(--gold);
+            color: var(--ink);
+            grid-column: span 2;
+        }
+
+        .share-btn.secondary {
+            background: rgba(26, 10, 0, 0.05);
+            color: var(--ink);
+            border: 1px solid var(--border);
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ─── FIT TO VIEWPORT (DESKTOP) ─── */
+        @media (min-width: 1024px) {
+            body {
+                overflow: hidden;
+            }
+
+            .split-wrapper {
+                height: 100vh;
+                overflow: hidden;
+            }
+
+            .split-left {
+                height: 100vh;
+                padding: 40px;
+            }
+
+            .ldf-emblem {
+                font-size: 1.2rem;
+                margin-bottom: 16px;
+            }
+
+            .split-left h1 {
+                font-size: clamp(3.5rem, 6vw, 6rem);
+                margin-bottom: 24px;
+                line-height: 1.1;
+            }
+
+            .split-left p {
+                font-size: 1.6rem;
+                margin-bottom: 32px;
+                font-weight: 300;
+                line-height: 1.5;
+            }
+
+            .split-right {
+                height: 100vh;
+                padding-bottom: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+
+            .right-intro {
+                max-width: 900px;
+                padding: 30px 40px 15px;
+            }
+
+            .right-intro h2 {
+                font-size: 3rem;
+                margin-bottom: 12px;
+            }
+
+            .right-intro p {
+                font-size: 1.4rem;
+                margin-bottom: 24px;
+                line-height: 1.5;
+            }
+
+            .form-section {
+                max-width: 930px;
+                margin: 0 auto;
+            }
+
+            .form-card {
+                padding: 24px 32px;
+                min-height: 50vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .form-card h2 {
+                font-size: 1.5rem;
+                margin-bottom: 8px;
+            }
+
+            .form-card>p {
+                margin-bottom: 24px;
+                font-size: 1rem;
+            }
+
+            .field {
+                margin-bottom: 20px;
+            }
+
+            .field label {
+                font-size: 0.9rem;
+            }
+
+            .age-display {
+                font-size: 3rem;
+                margin-bottom: 4px;
+            }
+
+            .age-display sup {
+                font-size: 1.2rem;
+            }
+
+            .pills {
+                gap: 8px;
+            }
+
+            .pill {
+                padding: 8px 16px;
+                font-size: 0.95rem;
+            }
+
+            .cta-btn {
+                padding: 14px;
+                margin-top: 8px;
+                font-size: 1.1rem;
+            }
+
+            .pills {
+                gap: 6px;
+            }
+
+            .pill {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+            .cta-btn {
+                padding: 12px;
+                margin-top: 4px;
+            }
+
+            /* Results Fit Constraints */
+            .result-header h3 {
+                font-size: 1.3rem;
+            }
+
+            .result-header p {
+                font-size: 0.85rem;
+            }
+
+            #result-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                margin-bottom: 16px;
+            }
+
+            .scheme-card {
+                padding: 12px;
+            }
+
+            .scheme-card h4 {
+                font-size: 0.9rem;
+            }
+
+            .scheme-card p {
+                font-size: 0.8rem;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+            .share-actions {
+                margin-top: 16px;
+                gap: 8px;
+            }
+
+            .share-btn {
+                padding: 10px;
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
 
 <body>
-
-    <div class="hero">
-        <div class="ldf-emblem">Left Democratic Front · Kerala</div>
-        <div class="star-banner">
-            <span>★</span>
-            <div class="divider"></div><span>★</span>
-            <div class="divider"></div><span>★</span>
+    <div class="split-wrapper">
+        <div class="lang-toggle">
+            <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" data-lang="ml" onclick="setLang('ml')">ML</button>
         </div>
-        <h1>Why should <em>you</em><br>vote for LDF?</h1>
-        <p>10 years of governance. Tell us who you are — and we'll show you exactly what we've done <em>for you</em>.
-        </p>
+        <!-- LEFT COLUMN: Sticky Hero/Carousel -->
+        <div class="split-left">
+            <div class="portrait-carousel">
+                <div class="slide active" style="background-image: url('assets/IMG/hero.png')"></div>
+                <div class="slide" style="background-image: url('assets/IMG/demographics/helathmodel_vdsajr.webp')">
+                </div>
+                <div class="slide" style="background-image: url('assets/IMG/demographics/nh66_g4epng.webp')"></div>
+                <div class="slide" style="background-image: url('assets/IMG/demographics/school3d_cugtim.webp')">
+                </div>
+                <div class="slide" style="background-image: url('assets/IMG/demographics/watermetro_ib6zrn.webp')">
+                </div>
+                <div class="slide" style="background-image: url('assets/IMG/demographics/vizhinajm1.webp')">
+                </div>
+            </div>
+            <div class="portrait-overlay"></div>
+
+            <div class="split-left-content">
+                <div class="ldf-emblem">Left Democratic Front · Kerala</div>
+                <h1>Why should <em>you</em> vote for LDF?</h1>
+                <p>10 years of governance. Tell us who you are — and we’ll show you exactly what we’ve done <em>for
+                        you</em>.
+                </p>
+
+                <div class="star-banner">
+                    <div class="divider"></div>
+                    <span>★ ★ ★</span>
+                    <div class="divider"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Scrolling Form & Results -->
+        <div class="split-right">
+            <div class="right-intro">
+                <h2 id="right-caption">Who Else Than LDF</h2>
+                <p id="right-subtext">Over the last 10 years, Kerala has seen a quiet revolution in welfare and
+                    progress.
+                    See how your journey aligns with the state's growth.</p>
+            </div>
+
+            <section class="form-section">
+                <div class="form-card">
+                    <h2>Your Story Starts Here</h2>
+                    <p>Share a little about yourself to see how LDF's work has shaped your life.</p>
+
+                    <div class="field">
+                        <label>Your Age <span>*</span></label>
+                        <div class="age-display"><span id="age-val">28</span><sup> yrs</sup></div>
+                        <input type="range" id="age-slider" min="18" max="80" value="28"
+                            oninput="updateAge(this.value)">
+                    </div>
+
+                    <div class="field">
+                        <label>Gender <span>*</span></label>
+                        <div class="pills" id="gender-pills">
+                            <div class="pill" onclick="toggleGender(this,'woman')">👩 Woman</div>
+                            <div class="pill" onclick="toggleGender(this,'man')">👨 Man</div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>I am a… <span>*</span></label>
+                        <div class="pills" id="identity-pills">
+                            <div class="pill" onclick="togglePill(this,'student')">� Student</div>
+                            <div class="pill" onclick="togglePill(this,'farmer')">🌾 Farmer</div>
+                            <div class="pill" onclick="togglePill(this,'worker')">� Worker / Labour</div>
+                            <div class="pill" onclick="togglePill(this,'fisherfolk')">🎣 Fisherfolk</div>
+                            <div class="pill" onclick="togglePill(this,'tribal')">🌿 Adivasi / Tribal</div>
+                            <div class="pill" onclick="togglePill(this,'senior')">👴 Senior Citizen</div>
+                            <div class="pill" onclick="togglePill(this,'small_biz')">🏪 Small Business</div>
+                            <div class="pill" onclick="togglePill(this,'disabled')">♿ Person with Disability</div>
+                            <div class="pill" onclick="togglePill(this,'youth')">⚡ Youth / Unemployed</div>
+                            <div class="pill" onclick="togglePill(this,'it_pro')">💻 IT / Tech Pro</div>
+                            <div class="pill" onclick="togglePill(this,'startup')">🚀 Startup / Entrepreneur</div>
+                            <div class="pill" onclick="togglePill(this,'business')">💼 Merchant / Business</div>
+                            <div class="pill" onclick="togglePill(this,'rural')">🏡 Rural Resident</div>
+                            <div class="pill" onclick="togglePill(this,'digital')">🎨 Digital Native</div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>What matters most to you?</label>
+                        <div class="pills" id="priority-pills">
+                            <div class="pill" onclick="togglePill(this,'health')">❤️ Health</div>
+                            <div class="pill" onclick="togglePill(this,'education')">📚 Education</div>
+                            <div class="pill" onclick="togglePill(this,'employment')">💼 Jobs</div>
+                            <div class="pill" onclick="togglePill(this,'housing')">🏠 Housing</div>
+                            <div class="pill" onclick="togglePill(this,'welfare')">🤝 Welfare</div>
+                            <div class="pill" onclick="togglePill(this,'infrastructure')">🛣️ Infrastructure</div>
+                            <div class="pill" onclick="togglePill(this,'environment')">🌿 Environment</div>
+                            <div class="pill" onclick="togglePill(this,'science')">🔬 Science & Tech</div>
+                            <div class="pill" onclick="togglePill(this,'industry')">🏭 Industry</div>
+                            <div class="pill" onclick="togglePill(this,'transport')">🚆 Transport</div>
+                            <div class="pill" onclick="togglePill(this,'social_justice')">⚖️ Justice</div>
+                        </div>
+                    </div>
+
+                    <button class="cta-btn" id="submit-btn" onclick="generate()">
+                        <div class="btn-inner">
+                            <div class="spinner"></div>
+                            <span class="btn-text">★ Show My LDF Story</span>
+                        </div>
+                    </button>
+                </div>
+            </section>
+
+            <section id="result">
+                <div class="result-header">
+                    <div class="tag">Personalised for You</div>
+                    <h3 id="result-title">Kerala's Promise to You</h3>
+                    <p id="result-subtitle">Based on your profile, here's what LDF has done</p>
+                </div>
+                <div class="narrative-box">
+                    <p id="narrative-text"></p>
+                </div>
+                <div id="schemes-container" class="schemes-grid"></div>
+
+                <div class="share-actions">
+                    <button class="share-btn primary" onclick="generateAndShare()">
+                        <span>📸 Share Your Story Card</span>
+                    </button>
+                    <button class="share-btn secondary" onclick="downloadCard()">
+                        <span>⬇️ Download Image</span>
+                    </button>
+                    <button class="share-btn secondary" onclick="shareToTwitter()">
+                        <span>🐦 Share on X</span>
+                    </button>
+                </div>
+
+                <button class="reset-btn" onclick="reset()">← Try Another Profile</button>
+            </section>
+        </div>
     </div>
 
-    <section class="form-section">
-        <div class="form-card">
-            <h2>Your Story Starts Here</h2>
-            <p>Share a little about yourself to see how LDF's work has shaped your life.</p>
+    <!-- Hidden Template for html2canvas -->
+    <div class="wrapped-container">
+        <div class="wrapped-card" id="wrapped-card-template">
+            <div class="wrapped-logo">LDF Story 2024</div>
+            <div class="wrapped-title">Your Ten Year<br>journey.</div>
+            <div class="wrapped-profile" id="wrapped-profile-text">Age 28 | IT Professional</div>
 
-            <div class="field">
-                <label>Your Age <span>*</span></label>
-                <div class="age-display"><span id="age-val">28</span><sup> yrs</sup></div>
-                <input type="range" id="age-slider" min="18" max="80" value="28" oninput="updateAge(this.value)">
+            <div class="wrapped-subtitle">Top 3 Achievements for You</div>
+            <div class="wrapped-items" id="wrapped-items-list">
+                <!-- Dynamic Items -->
             </div>
 
-            <div class="field">
-                <label>I am a… <span>*</span></label>
-                <div class="pills" id="identity-pills">
-                    <div class="pill" onclick="togglePill(this,'student')">🎓 Student</div>
-                    <div class="pill" onclick="togglePill(this,'farmer')">🌾 Farmer</div>
-                    <div class="pill" onclick="togglePill(this,'worker')">🔨 Worker / Labour</div>
-                    <div class="pill" onclick="togglePill(this,'woman')">👩 Woman</div>
-                    <div class="pill" onclick="togglePill(this,'fisherfolk')">🎣 Fisherfolk</div>
-                    <div class="pill" onclick="togglePill(this,'tribal')">🌿 Adivasi / Tribal</div>
-                    <div class="pill" onclick="togglePill(this,'senior')">👴 Senior Citizen</div>
-                    <div class="pill" onclick="togglePill(this,'small_biz')">🏪 Small Business</div>
-                    <div class="pill" onclick="togglePill(this,'disabled')">♿ Person with Disability</div>
-                    <div class="pill" onclick="togglePill(this,'youth')">⚡ Youth / Unemployed</div>
-                </div>
+            <div class="wrapped-footer">
+                <div class="cta">LDF <span>★</span> 2024</div>
+                <div class="brand">Building Kerala<br>Together</div>
             </div>
-
-            <div class="field">
-                <label>What matters most to you?</label>
-                <div class="pills" id="priority-pills">
-                    <div class="pill" onclick="togglePill(this,'health')">❤️ Health</div>
-                    <div class="pill" onclick="togglePill(this,'education')">📚 Education</div>
-                    <div class="pill" onclick="togglePill(this,'employment')">💼 Jobs</div>
-                    <div class="pill" onclick="togglePill(this,'housing')">🏠 Housing</div>
-                    <div class="pill" onclick="togglePill(this,'welfare')">🤝 Welfare</div>
-                    <div class="pill" onclick="togglePill(this,'infrastructure')">🛣️ Infrastructure</div>
-                </div>
-            </div>
-
-            <button class="cta-btn" id="submit-btn" onclick="generate()">
-                <div class="btn-inner">
-                    <div class="spinner"></div>
-                    <span class="btn-text">★ Show My LDF Story</span>
-                </div>
-            </button>
         </div>
-    </section>
-
-    <section id="result">
-        <div class="result-header">
-            <div class="tag">Personalised for You</div>
-            <h3 id="result-title">Kerala's Promise to You</h3>
-            <p id="result-subtitle">Based on your profile, here's what LDF has done</p>
-        </div>
-        <div class="narrative-box">
-            <p id="narrative-text"></p>
-        </div>
-        <div id="schemes-container" class="schemes-grid"></div>
-        <button class="reset-btn" onclick="reset()">← Try Another Profile</button>
-    </section>
+    </div>
 
     <script>
         // ═══════════════════════════════════════════════════════
-        // SCHEMES DATABASE
+        // SCHEMES DATA
         // ═══════════════════════════════════════════════════════
-        const SCHEMES = [
-            { name: "Karunya Health Scheme", year: 2012, sector: "health", tags: ["worker", "farmer", "woman", "fisherfolk", "tribal", "disabled", "senior"], desc: "Up to ₹5 lakh financial assistance for life-threatening diseases for BPL families.", emotional: "No family should lose a loved one because they couldn't afford treatment." },
-            { name: "Arogya Keralam", year: 2018, sector: "health", tags: ["worker", "farmer", "woman", "fisherfolk", "tribal", "rural"], desc: "Comprehensive health screening for every household in Kerala — over 80 lakh people screened.", emotional: "Your health was checked. Your life was prioritised." },
-            { name: "Hi-Tech School Programme", year: 2016, sector: "education", tags: ["student", "youth", "digital"], desc: "Over 45,000 classrooms equipped with smart boards, laptops, and high-speed internet in government schools.", emotional: "Every child in a government school deserves a world-class classroom." },
-            { name: "Life Mission (LIFE)", year: 2016, sector: "housing", tags: ["worker", "farmer", "woman", "fisherfolk", "tribal", "disabled"], desc: "4.3 lakh completed homes for the homeless and landless — the largest housing mission in Kerala.", emotional: "Every family deserves a roof. LDF built 4 lakh of them." },
-            { name: "Social Security Pension Hike", year: 2021, sector: "welfare", tags: ["senior", "worker", "disabled", "woman"], desc: "Pension raised from ₹600 to ₹1,600/month — the largest hike in Kerala's history.", emotional: "Your old age should be secure. LDF tripled what the state gives you." },
-            { name: "KFON (Broadband Kerala)", year: 2022, sector: "infrastructure", tags: ["student", "youth", "worker", "small_biz", "tribal", "digital"], desc: "Free broadband internet for 20 lakh BPL families. Declared as a basic right.", emotional: "Access to knowledge is a right, not a luxury." },
-            { name: "Kerala Startup Mission (KSUM)", year: 2016, sector: "employment", tags: ["youth", "student", "small_biz", "startup"], desc: "Ranked No.1 Startup Ecosystem in India. Supporting over 4,000 startups.", emotional: "You have the idea. We have the ecosystem to make it global." },
-            { name: "Kudumbashree Emploment", year: 2016, sector: "employment", tags: ["woman", "worker", "rural"], desc: "Over 3 lakh women-led micro-enterprises. Kudumbashree turnover crossed ₹3,400 crore.", emotional: "Powering the dreams of every woman in Kerala." },
-            { name: "Subhiksha Keralam", year: 2020, sector: "welfare", tags: ["farmer", "worker", "rural"], desc: "Achieving food self-sufficiency through integrated farming support and affordable hotels.", emotional: "You feed the state. We ensure your hands remain strong." },
-            { name: "Vidyakiranam", year: 2017, sector: "education", tags: ["student", "youth", "digital"], desc: "Digital learning spaces for 45,000+ classrooms making Kerala India's first fully digital education state.", emotional: "The world is now your classroom." },
-            { name: "Aardram Mission", year: 2017, sector: "health", tags: ["senior", "worker", "woman", "rural"], desc: "Modernizing health centres into patient-friendly Family Health Centres.", emotional: "Dignified care for every citizen." },
-            { name: "Haritha Keralam", year: 2016, sector: "environment", tags: ["environment", "rural", "farmer"], desc: "Integrating waste management and water conservation across Kerala.", emotional: "A greener, safer future for our children." }
-        ];
+        let ALL_SCHEMES = [];
+
+        async function loadSchemes() {
+            try {
+                const res = await fetch('schemes.json');
+                ALL_SCHEMES = await res.json();
+            } catch (e) {
+                console.error("Failed to load schemes.json", e);
+                // Basic fallback if fetch fails
+                ALL_SCHEMES = [
+                    { name: "Karunya Health Scheme", year: 2012, sector: "health", tags: ["worker", "farmer", "woman", "senior"], emotional: "No family should lose a loved one because they couldn't afford treatment." }
+                ];
+            }
+        }
+        loadSchemes();
 
         let selectedIdentities = [];
         let selectedPriorities = [];
@@ -610,6 +1142,15 @@
         }
         updateAge(28);
 
+        let selectedGender = '';
+
+        function toggleGender(el, val) {
+            const container = el.closest('#gender-pills');
+            container.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+            el.classList.add('active');
+            selectedGender = val;
+        }
+
         function togglePill(el, val) {
             const isIdentity = el.closest('#identity-pills') !== null;
             const arr = isIdentity ? selectedIdentities : selectedPriorities;
@@ -620,26 +1161,34 @@
 
         function filterSchemes(age, identities, priorities) {
             const allTags = [...identities];
+            if (selectedGender) allTags.push(selectedGender);
             if (age < 25) allTags.push('youth');
             if (age > 60) allTags.push('senior');
 
-            const scored = SCHEMES.map(s => {
+            const scored = ALL_SCHEMES.map(s => {
                 let score = 0;
-                allTags.forEach(t => { if (s.tags.includes(t)) score += 3; });
-                priorities.forEach(p => { if (s.sector === p) score += 2; });
-                // Add a tiny random factor to break ties and ensure variety
+                // Tag matches
+                allTags.forEach(t => { if (s.tags && s.tags.includes(t)) score += 3; });
+                // Sector matches (flexible search)
+                priorities.forEach(p => {
+                    if (s.sector && s.sector.toLowerCase().includes(p.toLowerCase())) score += 2;
+                });
+                // Bonus for items in the JSON that have "short" instead of "emotional"
                 score += Math.random() * 0.1;
                 return { ...s, score };
             });
 
-            // Sort by score descending and take top 6
             return scored.sort((a, b) => b.score - a.score).slice(0, 6);
         }
 
         async function generate() {
             const age = parseInt(document.getElementById('age-slider').value);
+            if (!selectedGender) {
+                alert(currentLang === 'ml' ? "ദയവായി നിങ്ങളുടെ ലിംഗം തിരഞ്ഞെടുക്കുക." : "Please select your gender.");
+                return;
+            }
             if (selectedIdentities.length === 0) {
-                alert("Please select at least one identity.");
+                alert(currentLang === 'ml' ? "ദയവായി നിങ്ങളുടെ പ്രൊഫൈൽ തിരഞ്ഞെടുക്കുക." : "Please select at least one identity.");
                 return;
             }
 
@@ -653,11 +1202,7 @@
                 const response = await fetch("/api/tagline", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        age: age,
-                        identities: selectedIdentities,
-                        priorities: selectedPriorities
-                    })
+                    body: JSON.stringify({ age, identities: selectedIdentities, priorities: selectedPriorities })
                 });
 
                 const data = await response.json();
@@ -673,8 +1218,12 @@
         }
 
         function getFallbackNarrative(age, identity, schemes) {
-            const top = schemes[0];
-            return `As a ${identity} in Kerala, you have seen a decade of real, tangible change. The LDF government invested in you — not in promises, but in programmes like ${top?.name || 'LIFE Mission'} that changed real lives. Your vote is a choice about whether that story continues.`;
+            const schemeName = (currentLang === 'ml' && schemes[0]?.name_ml) ? schemes[0].name_ml : (schemes[0]?.name || 'LIFE Mission');
+            if (currentLang === 'ml') {
+                const id_ml = PILL_LABELS[identity]?.ml || identity;
+                return `കേരളത്തിലെ ഒരു ${id_ml} എന്ന നിലയിൽ, കഴിഞ്ഞ ഒരു പതിറ്റാണ്ടിലെ യഥാർത്ഥ മാറ്റങ്ങൾ നിങ്ങൾ കണ്ടിട്ടുണ്ട്. ${schemeName} പോലുള്ള പദ്ധതികളിലൂടെ എൽ.ഡി.എഫ് സർക്കാർ നിങ്ങളെ ചേർത്തുപിടിച്ചു. ഈ മാറ്റങ്ങൾ തുടരാൻ നിങ്ങളുടെ വോട്ട് അത്യാവശ്യമാണ്.`;
+            }
+            return `As a ${identity} in Kerala, you have seen a decade of real, tangible change. The LDF government invested in you through programmes like ${schemeName}. Your vote ensures this story continues.`;
         }
 
         function showResult(age, identity, schemes, narrative) {
@@ -691,17 +1240,96 @@
                 const card = document.createElement('div');
                 card.className = 'scheme-card';
                 card.style.animationDelay = `${0.2 + i * 0.08}s`;
+                const sectorLabel = s.sector ? s.sector.replace(/_/g, ' ').toUpperCase() : (currentLang === 'ml' ? 'പൊതുവായത്' : 'GENERAL');
+                const yearDisplay = (s.year && !String(s.year).toLowerCase().includes('not specified')) ? s.year : '';
+
+                const displayName = (currentLang === 'ml' && s.name_ml) ? s.name_ml : s.name;
+                const displayEmo = (currentLang === 'ml' && s.emotional_ml) ? s.emotional_ml : (s.emotional || s.short || s.desc || (currentLang === 'ml' ? 'കേരളത്തിന്റെ ജീവിതം മാറ്റിമറിക്കുന്നു.' : 'Transforming lives in Kerala.'));
+
                 card.innerHTML = `
-      <div class="scheme-tag">${s.sector.toUpperCase()} <span class="year">${s.year}</span></div>
-      <h4>${s.name}</h4>
-      <p>${s.emotional}</p>
-    `;
+                    <div class="scheme-tag">${sectorLabel} <span class="year">${yearDisplay}</span></div>
+                    <h4>${displayName}</h4>
+                    <p>${displayEmo}</p>
+                `;
                 grid.appendChild(card);
             });
+
+            // Update the hidden Wrapped card
+            updateWrappedCard(age, identity, schemes);
 
             const resultEl = document.getElementById('result');
             resultEl.classList.add('visible');
             resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function updateWrappedCard(age, identity, schemes) {
+            const ageLabel = currentLang === 'ml' ? TRANSLATIONS.ml.wrapped_profile : TRANSLATIONS.en.wrapped_profile;
+            const idLabel = (currentLang === 'ml' && PILL_LABELS[identity]) ? PILL_LABELS[identity].ml : identity.toUpperCase();
+            document.getElementById('wrapped-profile-text').textContent = `${ageLabel} ${age} | ${idLabel}`;
+            const list = document.getElementById('wrapped-items-list');
+            list.innerHTML = '';
+            schemes.slice(0, 3).forEach((s, i) => {
+                const item = document.createElement('div');
+                item.className = 'wrapped-item';
+                item.style.animationDelay = `${0.3 + i * 0.1}s`;
+
+                const displayName = (currentLang === 'ml' && s.name_ml) ? s.name_ml : s.name;
+                const displayEmo = (currentLang === 'ml' && s.emotional_ml) ? s.emotional_ml : (s.emotional || s.short || 'Transforming Kerala.');
+
+                item.innerHTML = `
+                    <span class="num">0${i + 1}</span>
+                    <div class="name">${displayName}</div>
+                    <div class="desc">${displayEmo}</div>
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        async function getCardBlob() {
+            const canvas = await html2canvas(document.getElementById('wrapped-card-template'), {
+                scale: 2, useCORS: true, backgroundColor: null
+            });
+            return new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+        }
+
+        async function generateAndShare() {
+            const btn = document.querySelector('.share-btn.primary');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span>⏳ Processing...</span>'; btn.disabled = true;
+            try {
+                const blob = await getCardBlob();
+                const file = new File([blob], 'ldf-wrapped.png', { type: 'image/png' });
+                if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({
+                        files: [file],
+                        title: 'My LDF Wrapped 2024',
+                        text: 'Check out how LDF has transformed Kerala for me! #LDFWrapped #KeralaPromise'
+                    });
+                } else {
+                    downloadCard();
+                    alert("Sharing not supported on this browser. Image downloaded instead!");
+                }
+            } catch (err) {
+                alert("Could not generate share card. Please try downloading instead.");
+            }
+            btn.innerHTML = originalText; btn.disabled = false;
+        }
+
+        async function downloadCard() {
+            try {
+                const canvas = await html2canvas(document.getElementById('wrapped-card-template'), { scale: 3, useCORS: true });
+                const link = document.createElement('a');
+                link.download = `ldf-wrapped-${Date.now()}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            } catch (err) {
+                alert("Download failed. Please try again.");
+            }
+        }
+
+        function shareToTwitter() {
+            const text = encodeURIComponent("Check out my Kerala Story! 10 years of LDF governance personalized for me. #LDFWrapped #KeralaPromise");
+            window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
         }
 
         function typeWriter(el, text, speed) {
@@ -715,10 +1343,170 @@
             type();
         }
 
+        // ═══════════════════════════════════════════════════════
+        // LOCALIZATION
+        // ═══════════════════════════════════════════════════════
+        let currentLang = 'en';
+        const TRANSLATIONS = {
+            en: {
+                hero_title: "Why should <em>you</em> vote for LDF?",
+                hero_desc: "10 years of governance. Tell us who you are — and we’ll show you exactly what we’ve done <em>for you</em>.",
+                form_title: "Your Story Starts Here",
+                form_subtitle: "Share a little about yourself to see how LDF's work has shaped your life.",
+                age_label: "Your Age",
+                gender_label: "Gender",
+                identity_label: "I am a…",
+                priority_label: "What matters most to you?",
+                submit_btn: "★ Show My LDF Story",
+                result_personalised: "Personalised for You",
+                result_title: "Kerala's Promise to You",
+                result_subtitle: "Based on your profile, here's what LDF has done",
+                share_btn: "📸 Share Your Story Card",
+                download_btn: "⬇️ Download Image",
+                twitter_btn: "🐦 Share on X",
+                reset_btn: "← Try Another Profile",
+                right_caption: "Who Else Than LDF",
+                right_subtext: "Over the last 10 years, Kerala has seen a quiet revolution in welfare and progress. See how your journey aligns with the state's growth.",
+                wrapped_logo: "LDF Story 2024",
+                wrapped_title: "Your Ten Year journey.",
+                wrapped_profile: "Age",
+                wrapped_subtitle: "Top 3 Achievements for You",
+                wrapped_footer_cta: "LDF ★ 2024",
+                wrapped_footer_brand: "Building Kerala Together"
+            },
+            ml: {
+                hero_title: "എന്തുകൊണ്ട് <em>നിങ്ങൾ</em> എൽ.ഡി.എഫിന് വോട്ട് ചെയ്യണം?",
+                hero_desc: "10 വർഷത്തെ ഭരണം. നിങ്ങൾ ആരാണെന്ന് പറയൂ - ഞങ്ങൾ നിങ്ങൾക്കായി ചെയ്ത കാര്യങ്ങൾ കാണിച്ചു തരാം.",
+                form_title: "നിങ്ങളുടെ കഥ ഇവിടെ തുടങ്ങുന്നു",
+                form_subtitle: "നിങ്ങളുടെ ജീവിതത്തെ എൽ.ഡി.എഫിന്റെ പ്രവർത്തനം എങ്ങനെ സ്വാധീനിച്ചു എന്ന് നോക്കാം.",
+                age_label: "നിങ്ങളുടെ പ്രായം",
+                gender_label: "ലിംഗം",
+                identity_label: "ഞാൻ ഒരു...",
+                priority_label: "നിങ്ങൾക്ക് ഏറ്റവും പ്രധാനപ്പെട്ടത് എന്താണ്?",
+                submit_btn: "★ എന്റെ എൽ.ഡി.എഫ് കഥ കാണിക്കുക",
+                result_personalised: "നിങ്ങൾക്കായി തയ്യാറാക്കിയത്",
+                result_title: "നിങ്ങൾക്കുള്ള കേരളത്തിന്റെ വാഗ്ദാനം",
+                result_subtitle: "നിങ്ങളുടെ പ്രൊഫൈൽ അനുസരിച്ച് എൽ.ഡി.എഫ് ചെയ്ത കാര്യങ്ങൾ",
+                share_btn: "📸 സ്റ്റോറി കാർഡ് പങ്കിടുക",
+                download_btn: "⬇️ ചിത്രം ഡൗൺലോഡ് ചെയ്യുക",
+                twitter_btn: "🐦 X-ൽ പങ്കിടുക",
+                reset_btn: "← മറ്റൊരു പ്രൊഫൈൽ നോക്കൂ",
+                right_caption: "മറ്റാരുണ്ട് LDF അല്ലാതെ ",
+                right_subtext: "ക്ഷേമത്തിന്റെയും പുരോഗതിയുടെയും ഒരു പുതിയ കേരളം. നിങ്ങളുടെ ജീവിതത്തിലെ മാറ്റങ്ങൾ ഇവിടെ തൊട്ടറിയൂ.",
+                wrapped_logo: "എൽ.ഡി.എഫ് കഥ 2024",
+                wrapped_title: "നിങ്ങളുടെ പത്ത് വർഷത്തെ യാത്ര.",
+                wrapped_profile: "പ്രായം",
+                wrapped_subtitle: "നിങ്ങൾക്കായുള്ള മികച്ച 3 നേട്ടങ്ങൾ",
+                wrapped_footer_cta: "എൽ.ഡി.എഫ് ★ 2024",
+                wrapped_footer_brand: "നമുക്ക് ഒന്നിച്ച് മുന്നേറാം"
+            }
+        };
+
+        const PILL_LABELS = {
+            student: { en: "🎓 Student", ml: "🎓 വിദ്യാർത്ഥി" },
+            farmer: { en: "🌾 Farmer", ml: "🌾 കർഷകൻ" },
+            worker: { en: "🔨 Worker / Labour", ml: "🔨 തൊഴിലാളി" },
+            woman: { en: "👩 Woman", ml: "👩 സ്ത്രീ" },
+            man: { en: "👨 Man", ml: "👨 പുരുഷൻ" },
+            fisherfolk: { en: "🎣 Fisherfolk", ml: "🎣 മത്സ്യത്തൊഴിലാളി" },
+            tribal: { en: "🌿 Adivasi / Tribal", ml: "🌿 ആദിവാസി / ഗോത്രവർഗ്ഗം" },
+            senior: { en: "👴 Senior Citizen", ml: "👴 മുതിർന്ന പൗരൻ" },
+            small_biz: { en: "🏪 Small Business", ml: "🏪 ചെറുകിട സംരംഭകൻ" },
+            disabled: { en: "♿ Person with Disability", ml: "♿ ഭിന്നശേഷിക്കാർ" },
+            youth: { en: "⚡ Youth / Unemployed", ml: "⚡ യുവാക്കൾ / തൊഴിൽരഹിതർ" },
+            it_pro: { en: "💻 IT / Tech Pro", ml: "💻 ഐടി പ്രൊഫഷണൽ" },
+            startup: { en: "🚀 Startup / Entrepreneur", ml: "🚀 സ്റ്റാർട്ടപ്പ് / സംരംഭകൻ" },
+            business: { en: "💼 Merchant / Business", ml: "💼 വ്യാപാരി / ബിസിനസ്സ്" },
+            rural: { en: "🏡 Rural Resident", ml: "🏡 ഗ്രാമവാസി" },
+            digital: { en: "🎨 Digital Native", ml: "🎨 ഡിജിറ്റൽ നേറ്റീവ്" },
+            health: { en: "❤️ Health", ml: "❤️ ആരോഗ്യം" },
+            education: { en: "📚 Education", ml: "📚 വിദ്യാഭ്യാസം" },
+            employment: { en: "💼 Jobs", ml: "💼 തൊഴിൽ" },
+            housing: { en: "🏠 Housing", ml: "🏠 പാർപ്പിടം" },
+            welfare: { en: "🤝 Welfare", ml: "🤝 ക്ഷേമം" },
+            infrastructure: { en: "🛣️ Infrastructure", ml: "🛣️ അടിസ്ഥാന സൗകര്യങ്ങൾ" },
+            environment: { en: "🌿 Environment", ml: "🌿 പരിസ്ഥിതി" },
+            science: { en: "🔬 Science & Tech", ml: "🔬 ശാസ്ത്ര സാങ്കേതിക വിദ്യ" },
+            industry: { en: "🏭 Industry", ml: "🏭 വ്യവസായം" },
+            transport: { en: "🚆 Transport", ml: "🚆 ഗതാഗതം" },
+            social_justice: { en: "⚖️ Justice", ml: "⚖️ സാമൂഹിക നീതി" }
+        };
+
+        function setLang(lang) {
+            currentLang = lang;
+            document.body.classList.toggle('lang-ml', lang === 'ml');
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+
+            // Hero
+            document.querySelector('.split-left h1').innerHTML = TRANSLATIONS[lang].hero_title;
+            document.querySelector('.split-left p').innerHTML = TRANSLATIONS[lang].hero_desc;
+
+            // Form Labels
+            document.querySelector('.form-card h2').textContent = TRANSLATIONS[lang].form_title;
+            document.querySelector('.form-card > p').textContent = TRANSLATIONS[lang].form_subtitle;
+            const labels = document.querySelectorAll('.field label');
+            if (labels.length >= 4) {
+                labels[0].innerHTML = TRANSLATIONS[lang].age_label + ' <span>*</span>';
+                labels[1].innerHTML = TRANSLATIONS[lang].gender_label + ' <span>*</span>';
+                labels[2].innerHTML = TRANSLATIONS[lang].identity_label + ' <span>*</span>';
+                labels[3].innerHTML = TRANSLATIONS[lang].priority_label;
+            }
+            document.getElementById('submit-btn').querySelector('.btn-text').textContent = TRANSLATIONS[lang].submit_btn;
+
+            // Results Static
+            document.querySelector('.tag').textContent = TRANSLATIONS[lang].result_personalised;
+            document.getElementById('result-title').textContent = TRANSLATIONS[lang].result_title;
+            document.getElementById('result-subtitle').textContent = TRANSLATIONS[lang].result_subtitle;
+            document.querySelectorAll('.share-btn')[0].querySelector('span').textContent = TRANSLATIONS[lang].share_btn;
+            document.querySelectorAll('.share-btn')[1].querySelector('span').textContent = TRANSLATIONS[lang].download_btn;
+            document.querySelectorAll('.share-btn')[2].querySelector('span').textContent = TRANSLATIONS[lang].twitter_btn;
+            document.querySelector('.reset-btn').textContent = TRANSLATIONS[lang].reset_btn;
+
+            // Right Intro
+            document.getElementById('right-caption').innerHTML = TRANSLATIONS[lang].right_caption;
+            document.getElementById('right-subtext').textContent = TRANSLATIONS[lang].right_subtext;
+
+            // Hidden Template
+            document.querySelector('.wrapped-logo').textContent = TRANSLATIONS[lang].wrapped_logo;
+            document.querySelector('.wrapped-title').innerHTML = TRANSLATIONS[lang].wrapped_title;
+            document.querySelector('.wrapped-subtitle').textContent = TRANSLATIONS[lang].wrapped_subtitle;
+            document.querySelector('.wrapped-footer .cta').innerHTML = TRANSLATIONS[lang].wrapped_footer_cta;
+            document.querySelector('.wrapped-footer .brand').innerHTML = TRANSLATIONS[lang].wrapped_footer_brand;
+
+            // Pills
+            document.querySelectorAll('.pill').forEach(pill => {
+                const id = pill.dataset.id;
+                if (PILL_LABELS[id]) pill.textContent = PILL_LABELS[id][lang];
+            });
+        }
+
+        // Initialize with dataset-id for pills
+        document.querySelectorAll('#gender-pills .pill').forEach((p, i) => {
+            const ids = ['woman', 'man'];
+            p.dataset.id = ids[i];
+        });
+        document.querySelectorAll('#identity-pills .pill').forEach((p, i) => {
+            const ids = ['student', 'farmer', 'worker', 'fisherfolk', 'tribal', 'senior', 'small_biz', 'disabled', 'youth', 'it_pro', 'startup', 'business', 'rural', 'digital'];
+            p.dataset.id = ids[i];
+        });
+        document.querySelectorAll('#priority-pills .pill').forEach((p, i) => {
+            const ids = ['health', 'education', 'employment', 'housing', 'welfare', 'infrastructure', 'environment', 'science', 'industry', 'transport', 'social_justice'];
+            p.dataset.id = ids[i];
+        });
+
         function reset() {
             document.getElementById('result').classList.remove('visible');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // Carousel Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.portrait-carousel .slide');
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 5000);
     </script>
 </body>
 

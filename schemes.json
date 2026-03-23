@@ -1,6 +1,7 @@
 [
   {
     "name": "LIFE Mission (Livelihood Inclusion and Financial Empowerment)",
+    "name_ml": "ലൈഫ് മിഷൻ",
     "year": 2017,
     "sector": "housing",
     "tags": [
@@ -11,10 +12,12 @@
       "rural"
     ],
     "short": "Comprehensive housing scheme building over 4.5 lakh homes for the landless and homeless in Kerala.",
-    "emotional": "Your family deserved a secure home. We built it together."
+    "emotional": "Your family deserved a secure home. We built it together.",
+    "emotional_ml": "സുരക്ഷിതമായ ഒരു വീട് നിങ്ങളുടെ അവകാശമായിരുന്നു. നമ്മൾ അത് ഒന്നിച്ച് യാഥാർത്ഥ്യമാക്കി."
   },
   {
     "name": "K-FON (Kerala Fibre Optic Network)",
+    "name_ml": "കെ-ഫോൺ",
     "year": 2023,
     "sector": "infrastructure",
     "tags": [
@@ -26,10 +29,12 @@
       "digital"
     ],
     "short": "Rs 1,516 crore project providing high-speed internet as a basic right to households and government offices.",
-    "emotional": "The digital future belongs to you. We've bridged the gap."
+    "emotional": "The digital future belongs to you. We've bridged the gap.",
+    "emotional_ml": "ഡിജിറ്റൽ ഭാവി നിങ്ങളുടേതാണ്. നമ്മൾ ആ വിടവ് നികത്തിക്കഴിഞ്ഞു."
   },
   {
     "name": "Aardram Mission",
+    "name_ml": "ആർദ്രം മിഷൻ",
     "year": 2017,
     "sector": "health",
     "tags": [
@@ -40,7 +45,8 @@
       "health"
     ],
     "short": "Patient-friendly transformation of primary health centres into Family Health Centres with free quality treatment.",
-    "emotional": "Your health is our priority. Dignified care for every citizen."
+    "emotional": "Your health is our priority. Dignified care for every citizen.",
+    "emotional_ml": "നിങ്ങളുടെ ആരോഗ്യം ഞങ്ങളുടെ ഉത്തരവാദിത്തം. മികച്ച ചികിത്സ എല്ലാവർക്കും സൗജന്യമായി."
   },
   {
     "name": "Haritha Keralam Mission",
