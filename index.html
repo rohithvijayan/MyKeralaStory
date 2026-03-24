@@ -558,7 +558,7 @@
 
         .schemes-grid {
             display: grid;
-            gap: 12px;
+            gap: 10px;
             grid-template-columns: repeat(2, 1fr);
         }
 
@@ -681,7 +681,7 @@
             left: -9999px;
             top: 0;
             width: 400px;
-            height: 720px;
+            height: 850px;
             /* 9:16 aspect */
             background: #000;
             overflow: hidden;
@@ -691,8 +691,13 @@
         .wrapped-card {
             width: 100%;
             height: 100%;
-            background: linear-gradient(160deg, #c0392b 0%, #1a0a00 100%);
-            padding: 30px;
+            background: #0f0505;
+            background-image:
+                radial-gradient(at 0% 0%, #c0392b 0px, transparent 60%),
+                radial-gradient(at 100% 20%, #8e0000 0px, transparent 70%),
+                radial-gradient(at 30% 100%, #3a0000 0px, transparent 80%),
+                radial-gradient(at 100% 100%, #d4a84333 0px, transparent 50%);
+            padding: 30px 30px 40px 30px;
             display: flex;
             flex-direction: column;
             color: white;
@@ -701,82 +706,114 @@
 
         .wrapped-logo {
             font-family: 'Racing Sans One', sans-serif;
-            font-size: 1rem;
-            letter-spacing: 0.2em;
+            font-size: 0.9rem;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
             color: var(--gold);
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(212, 168, 67, 0.3);
-            padding-bottom: 6px;
+            margin-bottom: 25px;
+            opacity: 0.8;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(212, 168, 67, 0.2);
         }
 
         .wrapped-title {
             font-family: 'Racing Sans One', sans-serif;
-            font-size: 2.5rem;
+            font-size: 2rem;
             line-height: 1.1;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-style: italic;
+            color: #fff;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         .wrapped-profile {
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.1);
+            font-size: 0.8rem;
+            background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(10px);
-            padding: 8px 16px;
+            -webkit-backdrop-filter: blur(10px);
+            padding: 5px 12px;
             border-radius: 100px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             width: fit-content;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 500;
         }
 
         .wrapped-subtitle {
             text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            font-size: 0.75rem;
             color: var(--gold);
-            margin-bottom: 18px;
-            font-weight: 500;
+            margin-bottom: 20px;
+            font-weight: 700;
         }
 
         .wrapped-items {
             flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            gap: 12px;
+            justify-content: center;
+            gap: 10px;
         }
 
         .wrapped-item {
-            animation: fadeInRight 0.5s ease both;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 10px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            animation: fadeInRight 0.6s ease both;
         }
 
         .wrapped-item .num {
             font-family: 'Racing Sans One', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: var(--gold);
-            margin-bottom: 2px;
-            display: block;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .wrapped-item .num::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, rgba(212, 168, 67, 0.4), transparent);
         }
 
         .wrapped-item .name {
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 0px;
-            line-height: 1.2;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+            line-height: 1.3;
+            color: #fff;
         }
 
         .wrapped-item .desc {
             font-size: 0.75rem;
-            opacity: 0.7;
+            opacity: 0.8;
             line-height: 1.3;
+            color: #eee;
         }
 
         .wrapped-footer {
-            margin-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
+            margin-top: auto;
+            padding-top: 15px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 5px;
+            position: relative;
+        }
+
+        .wrapped-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
         }
 
         .wrapped-footer .cta {
@@ -785,12 +822,19 @@
             font-style: italic;
             font-size: 1.4rem;
             text-align: center;
+            color: var(--gold);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
         }
 
         .wrapped-footer .brand {
-            font-size: 0.7rem;
-            text-align: right;
-            opacity: 0.6;
+            font-size: 0.75rem;
+            text-align: center;
+            opacity: 1;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            font-weight: 600;
+            margin-top: 8px;
+            display: block;
         }
 
         .share-actions {
@@ -871,6 +915,7 @@
                 padding-bottom: 60px;
                 overflow-y: auto;
                 overflow-x: hidden;
+                width: 100%;
             }
 
             .right-intro {
@@ -927,27 +972,23 @@
             }
 
             .pills {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+
+            .pill {
+                padding: 10px 12px;
+                font-size: 0.82rem;
+                display: flex;
+                align-items: center;
                 gap: 8px;
-            }
-
-            .pill {
-                padding: 8px 16px;
-                font-size: 0.95rem;
-            }
-
-            .cta-btn {
-                padding: 14px;
-                margin-top: 8px;
-                font-size: 1.1rem;
-            }
-
-            .pills {
-                gap: 6px;
-            }
-
-            .pill {
-                padding: 6px 12px;
-                font-size: 0.8rem;
+                justify-content: flex-start;
+                height: 100%;
+                text-align: left;
+                width: 100%;
+                box-sizing: border-box;
             }
 
             .cta-btn {
@@ -964,14 +1005,14 @@
                 font-size: 0.85rem;
             }
 
-            #result-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-                margin-bottom: 16px;
+            .schemes-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                width: 100%;
             }
 
             .scheme-card {
-                padding: 12px;
+                padding: 12px 10px;
             }
 
             .scheme-card h4 {
@@ -1024,7 +1065,7 @@
 
             <div class="split-left-content">
                 <div class="ldf-emblem">Left Democratic Front · Keralam</div>
-                <h1>Why should <em>you</em> vote for LDF?</h1>
+                <h1>Why should you vote for <em>LDF?</em></h1>
                 <p>10 years of governance. Tell us who you are — and we’ll show you exactly what we’ve done <em>for
                         you</em>.
                 </p>
@@ -1078,7 +1119,7 @@
                     <div class="field">
                         <label>I am a… <span>*</span></label>
                         <div class="pills" id="identity-pills">
-                            <div class="pill" onclick="togglePill(this,'student')">� Student</div>
+                            <div class="pill" onclick="togglePill(this,'student')">🎓 Student</div>
                             <div class="pill" onclick="togglePill(this,'farmer')">🌾 Farmer</div>
                             <div class="pill" onclick="togglePill(this,'worker')">🔨 Worker / Labour</div>
                             <div class="pill" onclick="togglePill(this,'senior')">👴 Senior Citizen</div>
@@ -1161,6 +1202,7 @@
 
             <div class="wrapped-footer">
                 <div class="cta">മറ്റാരുണ്ട് LDF അല്ലാതെ</div>
+                <div class="brand">WWW.MYKERALASTORY.COM</div>
             </div>
         </div>
     </div>
@@ -1181,13 +1223,22 @@
         }
 
         // Fetch Malayalam data
-        fetch('public/schemesInmalayalam.json')
+        fetch('/schemesInmalayalam.json')
             .then(res => res.json())
             .then(data => {
                 SCHEMES_ML = data;
                 if (currentLang === 'ml') ALL_SCHEMES = SCHEMES_ML;
+                console.log('ML schemes loaded:', data.length);
             })
-            .catch(err => console.error('Error loading ML schemes:', err));
+            .catch(err => {
+                console.warn('Error loading ML schemes from root, trying /public/...', err);
+                fetch('/public/schemesInmalayalam.json')
+                    .then(res => res.json())
+                    .then(data => {
+                        SCHEMES_ML = data;
+                        if (currentLang === 'ml') ALL_SCHEMES = SCHEMES_ML;
+                    });
+            });
 
         let selectedIdentities = [];
         let selectedPriorities = [];
@@ -1328,18 +1379,17 @@
             document.getElementById('wrapped-profile-text').textContent = `${ageLabel} ${age} | ${idLabel}`;
             const list = document.getElementById('wrapped-items-list');
             list.innerHTML = '';
+            // Only show 4 items for better fit in the new design if needed, but 3 is safer.
             schemes.slice(0, 3).forEach((s, i) => {
                 const item = document.createElement('div');
                 item.className = 'wrapped-item';
-                item.style.animationDelay = `${0.3 + i * 0.1}s`;
-
-                const displayName = (currentLang === 'ml' && s.name_ml) ? s.name_ml : s.name;
-                const displayEmo = (currentLang === 'ml' && s.emotional_ml) ? s.emotional_ml : (s.emotional || s.short || 'Transforming Keralam.');
-
+                item.style.animationDelay = `${0.2 + (i * 0.15)}s`;
+                const name = (currentLang === 'ml' && s.name_ml) ? s.name_ml : s.name;
+                const desc = (currentLang === 'ml' && s.short_ml) ? s.short_ml : s.short;
                 item.innerHTML = `
-                    <span class="num">0${i + 1}</span>
-                    <div class="name">${displayName}</div>
-                    <div class="desc">${displayEmo}</div>
+                    <span class="num">${i + 1}</span>
+                    <div class="name">${name}</div>
+                    <div class="desc">${desc}</div>
                 `;
                 list.appendChild(item);
             });
@@ -1409,7 +1459,7 @@
         let currentLang = 'en';
         const TRANSLATIONS = {
             en: {
-                hero_title: "Why should <em>you</em> vote for LDF?",
+                hero_title: "Why should you vote for <em>LDF</em>?",
                 hero_desc: "10 years of governance. Tell us who you are — and we’ll show you exactly what we’ve done <em>for you</em>.",
                 form_title: "Your Story Starts Here",
                 form_subtitle: "Share a little about yourself to see how LDF's work has shaped your life.",
@@ -1436,7 +1486,7 @@
                 scroll_indicator: "Scroll to Start"
             },
             ml: {
-                hero_title: "എന്തുകൊണ്ട് <em>നിങ്ങൾ</em> എൽ.ഡി.എഫിന് വോട്ട് ചെയ്യണം?",
+                hero_title: "എന്തുകൊണ്ട് നിങ്ങൾ <em>എൽ.ഡി.എഫിന്</em> വോട്ട് ചെയ്യണം?",
                 hero_desc: "10 വർഷത്തെ ഭരണം. നിങ്ങൾ ആരാണെന്ന് പറയൂ - ഞങ്ങൾ നിങ്ങൾക്കായി ചെയ്ത കാര്യങ്ങൾ കാണിച്ചു തരാം.",
                 form_title: "നിങ്ങളുടെ കഥ ഇവിടെ തുടങ്ങുന്നു",
                 form_subtitle: "നിങ്ങളുടെ ജീവിതത്തെ എൽ.ഡി.എഫിന്റെ പ്രവർത്തനം എങ്ങനെ സ്വാധീനിച്ചു എന്ന് നോക്കാം.",
