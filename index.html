@@ -1122,15 +1122,11 @@
                             <div class="pill" onclick="togglePill(this,'student')">🎓 Student</div>
                             <div class="pill" onclick="togglePill(this,'farmer')">🌾 Farmer</div>
                             <div class="pill" onclick="togglePill(this,'worker')">🔨 Worker / Labour</div>
+                            <div class="pill" onclick="togglePill(this,'fisherfolk')">🎣 Fisherfolk</div>
                             <div class="pill" onclick="togglePill(this,'senior')">👴 Senior Citizen</div>
-                            <div class="pill" onclick="togglePill(this,'merchant')">🏪 Merchant</div>
                             <div class="pill" onclick="togglePill(this,'disabled')">♿ Differently Abled</div>
-                            <div class="pill" onclick="togglePill(this,'youth')">⚡ Youth</div>
                             <div class="pill" onclick="togglePill(this,'techie')">💻 Techie</div>
-                            <div class="pill" onclick="togglePill(this,'startup')">🚀 Entrepreneur</div>
                             <div class="pill" onclick="togglePill(this,'business')">💼 Business Owner</div>
-                            <div class="pill" onclick="togglePill(this,'rural')">🏡 Rural Resident</div>
-                            <div class="pill" onclick="togglePill(this,'digital')">🎨 Digital Native</div>
                         </div>
                     </div>
 
@@ -1143,11 +1139,10 @@
                             <div class="pill" onclick="togglePill(this,'housing')">🏠 Housing</div>
                             <div class="pill" onclick="togglePill(this,'welfare')">🤝 Welfare</div>
                             <div class="pill" onclick="togglePill(this,'infrastructure')">🛣️ Infrastructure</div>
-                            <div class="pill" onclick="togglePill(this,'environment')">🌿 Environment</div>
-                            <div class="pill" onclick="togglePill(this,'science')">🔬 Science & Tech</div>
+                            <div class="pill" onclick="togglePill(this,'environment')">🌿 Environment & Science</div>
                             <div class="pill" onclick="togglePill(this,'industry')">🏭 Industry</div>
                             <div class="pill" onclick="togglePill(this,'transport')">🚆 Transport</div>
-                            <div class="pill" onclick="togglePill(this,'social_justice')">⚖️ Justice</div>
+                            <div class="pill" onclick="togglePill(this,'social_justice')">⚖️ Social Justice</div>
                         </div>
                     </div>
 
@@ -1270,6 +1265,26 @@
         function filterSchemes(age, identities, priorities) {
             const allTags = [...identities];
             if (selectedGender) allTags.push(selectedGender);
+
+            // Mapping removed identities to appropriate substitutes
+            if (identities.includes('student')) {
+                allTags.push('youth');
+                allTags.push('digital');
+            }
+            if (identities.includes('business')) {
+                allTags.push('merchant');
+                allTags.push('startup');
+            }
+            if (identities.includes('farmer') || identities.includes('worker') || identities.includes('fisherfolk')) {
+                allTags.push('rural');
+            }
+            if (identities.includes('fisherfolk')) {
+                allTags.push('worker');
+            }
+            if (identities.includes('techie')) {
+                allTags.push('digital');
+            }
+
             if (age < 25) allTags.push('youth');
             if (age > 60) allTags.push('senior');
 
@@ -1279,7 +1294,13 @@
                 allTags.forEach(t => { if (s.tags && s.tags.includes(t)) score += 3; });
                 // Sector matches (flexible search)
                 priorities.forEach(p => {
-                    if (s.sector && s.sector.toLowerCase().includes(p.toLowerCase())) score += 2;
+                    if (s.sector) {
+                        const lowSector = s.sector.toLowerCase();
+                        const lowP = p.toLowerCase();
+                        if (lowSector.includes(lowP)) score += 2;
+                        // Special handling for combined Environment & Science
+                        if (lowP === 'environment' && lowSector.includes('science')) score += 2;
+                    }
                 });
                 // Bonus for items in the JSON that have "short" instead of "emotional"
                 score += Math.random() * 0.1;
@@ -1518,25 +1539,20 @@
             student: { en: "🎓 Student", ml: "🎓 വിദ്യാർത്ഥി" },
             farmer: { en: "🌾 Farmer", ml: "🌾 കർഷകൻ" },
             worker: { en: "🔨 Worker", ml: "🔨 തൊഴിലാളി" },
+            fisherfolk: { en: "🎣 Fisherfolk", ml: "🎣 മത്സ്യത്തൊഴിലാളി" },
             woman: { en: "👩 Woman", ml: "👩 സ്ത്രീ" },
             man: { en: "👨 Man", ml: "👨 പുരുഷൻ" },
             senior: { en: "👴 Senior Citizen", ml: "👴 മുതിർന്ന പൗരൻ" },
-            merchant: { en: "🏪 Merchant", ml: "🏪 ചെറുകിട വ്യാപാരി" },
             disabled: { en: "♿ Differently Abled", ml: "♿ ഭിന്നശേഷിക്കാർ" },
-            youth: { en: "⚡ Youth", ml: "⚡ യുവാക്കൾ" },
             techie: { en: "💻 Techie", ml: "💻 ഐടി വിദഗ്ധൻ" },
-            startup: { en: "🚀 Entrepreneur", ml: "🚀 സംരംഭകൻ" },
             business: { en: "💼 Business Owner", ml: "💼 ബിസിനസ്സ് ഉടമ" },
-            rural: { en: "🏡 Rural Resident", ml: "🏡 ഗ്രാമവാസി" },
-            digital: { en: "🎨 Digital Native", ml: "🎨 ഡിജിറ്റൽ നേറ്റീവ്" },
             health: { en: "❤️ Health", ml: "❤️ ആരോഗ്യം" },
             education: { en: "📚 Education", ml: "📚 വിദ്യാഭ്യാസം" },
             employment: { en: "💼 Jobs", ml: "💼 തൊഴിൽ" },
             housing: { en: "🏠 Housing", ml: "🏠 പാർപ്പിടം" },
             welfare: { en: "🤝 Welfare", ml: "🤝 ക്ഷേമം" },
             infrastructure: { en: "🛣️ Infrastructure", ml: "🛣️ അടിസ്ഥാന സൗകര്യങ്ങൾ" },
-            environment: { en: "🌿 Environment", ml: "🌿 പരിസ്ഥിതി" },
-            science: { en: "🔬 Science & Tech", ml: "🔬 ശാസ്ത്ര സാങ്കേതിക വിദ്യ" },
+            environment: { en: "🌿 Environment & Science", ml: "🌿 പരിസ്ഥിതിയും ശാസ്ത്രവും" },
             industry: { en: "🏭 Industry", ml: "🏭 വ്യവസായം" },
             transport: { en: "🚆 Transport", ml: "🚆 ഗതാഗതം" },
             social_justice: { en: "⚖️ Justice", ml: "⚖️ സാമൂഹിക നീതി" }
@@ -1603,11 +1619,11 @@
             p.dataset.id = ids[i];
         });
         document.querySelectorAll('#identity-pills .pill').forEach((p, i) => {
-            const ids = ['student', 'farmer', 'worker', 'senior', 'merchant', 'disabled', 'youth', 'techie', 'startup', 'business', 'rural', 'digital'];
+            const ids = ['student', 'farmer', 'worker', 'fisherfolk', 'senior', 'disabled', 'techie', 'business'];
             p.dataset.id = ids[i];
         });
         document.querySelectorAll('#priority-pills .pill').forEach((p, i) => {
-            const ids = ['health', 'education', 'employment', 'housing', 'welfare', 'infrastructure', 'environment', 'science', 'industry', 'transport', 'social_justice'];
+            const ids = ['health', 'education', 'employment', 'housing', 'welfare', 'infrastructure', 'environment', 'industry', 'transport', 'social_justice'];
             p.dataset.id = ids[i];
         });
 
